@@ -1,0 +1,12 @@
+D:\Github_Projects\ALTEA-Inventory\Server\ALTEA-IS.Data\bin\Debug\net7.0\ALTEA-IS.Data.deps.json
+D:\Github_Projects\ALTEA-Inventory\Server\ALTEA-IS.Data\bin\Debug\net7.0\ALTEA-IS.Data.dll
+D:\Github_Projects\ALTEA-Inventory\Server\ALTEA-IS.Data\bin\Debug\net7.0\ALTEA-IS.Data.pdb
+D:\Github_Projects\ALTEA-Inventory\Server\ALTEA-IS.Data\obj\Debug\net7.0\ALTEA-IS.Data.csproj.AssemblyReference.cache
+D:\Github_Projects\ALTEA-Inventory\Server\ALTEA-IS.Data\obj\Debug\net7.0\ALTEA-IS.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\Github_Projects\ALTEA-Inventory\Server\ALTEA-IS.Data\obj\Debug\net7.0\ALTEA-IS.Data.AssemblyInfoInputs.cache
+D:\Github_Projects\ALTEA-Inventory\Server\ALTEA-IS.Data\obj\Debug\net7.0\ALTEA-IS.Data.AssemblyInfo.cs
+D:\Github_Projects\ALTEA-Inventory\Server\ALTEA-IS.Data\obj\Debug\net7.0\ALTEA-IS.Data.csproj.CoreCompileInputs.cache
+D:\Github_Projects\ALTEA-Inventory\Server\ALTEA-IS.Data\obj\Debug\net7.0\ALTEA-IS.Data.dll
+D:\Github_Projects\ALTEA-Inventory\Server\ALTEA-IS.Data\obj\Debug\net7.0\refint\ALTEA-IS.Data.dll
+D:\Github_Projects\ALTEA-Inventory\Server\ALTEA-IS.Data\obj\Debug\net7.0\ALTEA-IS.Data.pdb
+D:\Github_Projects\ALTEA-Inventory\Server\ALTEA-IS.Data\obj\Debug\net7.0\ref\ALTEA-IS.Data.dll

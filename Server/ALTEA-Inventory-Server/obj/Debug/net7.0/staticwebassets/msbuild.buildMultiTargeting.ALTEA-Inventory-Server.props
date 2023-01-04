@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\ALTEA-Inventory-Server.props" />
+</Project>

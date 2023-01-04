@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "tbltRIvEMDxo2tvKLGbdDXgQPHWm4qlYjFeLtoxMgZI=",
+  "Source": "ALTEA-Inventory-Server",
+  "BasePath": "_content/ALTEA-Inventory-Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
