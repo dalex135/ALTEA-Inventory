@@ -32,7 +32,7 @@ yarn-error.log
 
 # Miscellaneous
 /.angular/cache
-\.angular\cache
+cache/
 .sass-cache/
 /connect.lock
 /coverage
@@ -65,6 +65,8 @@ Thumbs.db
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+#Migrations
+Migrations/
 # User-specific files
 *.rsuser
 *.suo

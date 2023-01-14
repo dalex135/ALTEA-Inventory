@@ -1,0 +1,11 @@
+.center {
+    position: absolute;
+    position: relative;
+    text-align: center;
+    margin-top: 0px;
+    width: auto;
+  }
+
+  .spacer{
+    flex: 1 1 auto;
+  }
