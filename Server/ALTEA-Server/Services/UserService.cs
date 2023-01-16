@@ -12,6 +12,11 @@ namespace ALTEA_Server.Services
             _dataContext = dataContext;
         }
 
+        public Task<bool> authenticate(Object obj)
+        {
+            return Task.FromResult(true);
+        }
+
         public void SaveUser(User user)
         {
             _dataContext.Users.Add(user);
@@ -28,7 +33,15 @@ namespace ALTEA_Server.Services
             });
 
         }
+        public async Task<User> GetUserByUserName(string username)
+        {
 
+            var user = _dataContext.Users.FirstOrDefaultAsync(s => s.UserName == username)!;
+            if (user is not null)
+                return await user;
+            else
+                return null;
+        }
         public async Task<User> GetUserByID(int id)
         {
 

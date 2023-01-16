@@ -25,10 +25,14 @@ internal class Program
             options.AddPolicy(name: MyAllowSpecificOrigins,
                               policy =>
                               {
-                                  policy.WithOrigins("http://localhost:5218",
+                                  policy.WithOrigins("http://localhost:5218/User/Authenticate",
+                                                      "http://localhost:5218",
                                                       "http://localhost:4200",
-                                                      "https://localhost:7042",
-                                                      "http://localhost:5218");
+                                                      "http://localhost:4200/login",
+                                                      "https://localhost:7042" )
+                                    .AllowAnyHeader()
+                                    .AllowAnyMethod()
+                                    .AllowCredentials(); 
                               });
         });
         var app = builder.Build();

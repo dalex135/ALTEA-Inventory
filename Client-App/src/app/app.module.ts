@@ -59,6 +59,6 @@ import { AddSchoolComponent } from './Inventory-management/add-school/add-school
   ],
   providers: [],
   bootstrap: [AppComponent],
-  // entryComponents:[AddDeviceComponent]
+
 })
 export class AppModule { }
