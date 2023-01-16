@@ -15,38 +15,38 @@ namespace ALTEA_Server.Controllers
             _deviceService = deviceService;
         }
 
-        [HttpGet("GetDevice/{id}")]
-        public async Task<ActionResult<Device>> GetDevice(int id)
+        [HttpGet("GetByID/{id}")]
+        public async Task<ActionResult<Device>> Get(int id)
         {
             return Ok(await _deviceService.GetDeviceByID(id));
         }
 
-        [HttpGet("GetAllDevice")]
-        public async Task<ActionResult<List<Device>>> GetAllDevice()
+        [HttpGet("GetAll")]
+        public async Task<ActionResult<List<Device>>> GetAll()
         {
             return Ok(await _deviceService.GetAllDevices());
         }
 
-        [HttpPost("SaveDevice")]
-        public  void SaveDevice(Device device)
+        [HttpPost("Save")]
+        public  void Save(Device device)
         {
             _deviceService.SaveDevice(device);
         }
 
-        [HttpPost("SaveDevices")]
-        public  void SaveDevice(List<Device> devices)
+        [HttpPost("SaveAll")]
+        public  void SaveAll(List<Device> devices)
         {
             _deviceService.SaveDevices(devices);
         }
 
-        [HttpDelete("DeleteDevice")]
-        public  void DeleteDevice(Device device)
+        [HttpDelete("Delete")]
+        public  void Delete(Device device)
         {
             _deviceService.DeleteDevice(device);
         }
 
-        [HttpPut("UpdateDevice")]
-        public  void UpdateDevice(Device device)
+        [HttpPut("Update")]
+        public  void Update(Device device)
         {
             _deviceService.UpdateDevice (device);
         }

@@ -9,16 +9,34 @@
     <mat-icon>account_circle</mat-icon>
   </button>
 
-  <h1 class="center">ALTEA - School Donations Inventory</h1>
+  <h1 class="center">Inventory of ALTEA Charity Organization</h1>
 
   <mat-menu #menu="matMenu">
-    <button mat-menu-item >Add a Schools</button>
-    <button mat-menu-item >Add a Devices</button>
+    <button mat-menu-item [matMenuTriggerFor]="schools">Schools</button>
+    <button mat-menu-item [matMenuTriggerFor]="devices">Devices</button>
+    <button mat-menu-item [matMenuTriggerFor]="users">Users</button>
+  </mat-menu>
 
+  <mat-menu #schools="matMenu">
+    <button mat-menu-item >Add a School/Schools</button>
+    <button mat-menu-item >Remove a School/Schools</button>
+    <button mat-menu-item >Update a School/Schools</button>
+  </mat-menu>
+
+  <mat-menu #devices="matMenu">
+    <button mat-menu-item >Add a Device/Devices</button>
+    <button mat-menu-item >Remove a Device/Devices</button>
+    <button mat-menu-item >Update a Device/Devices</button>
+  </mat-menu>
+
+  <mat-menu #users="matMenu">
+    <button mat-menu-item >Add a User/Users</button>
+    <button mat-menu-item >Remove a User/Users</button>
+    <button mat-menu-item >Update a User/Users</button>
   </mat-menu>
 
   <mat-menu #account="matMenu">
-    <label mat-menu-item>Admin</label>
+    <label mat-menu-item>{{userAccountService.user.userName}}</label>
     <button mat-menu-item>Change Password</button>
     <button mat-menu-item>Log Out</button>
   </mat-menu>
@@ -33,9 +51,6 @@
 
           <!--- Note that these columns can be defined in any order.
                 The actual rendered columns are set as a property on the row definition" -->
-
-
-
           <!-- Name Column -->
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef> Name </th>
@@ -68,6 +83,55 @@
 
       </mat-tab>
       <mat-tab label="Devices">
+
+
+
+        <table mat-table [dataSource]="datasourceDevices" class="mat-elevation-z8">
+
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef> Type </th>
+            <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="brand">
+            <th mat-header-cell *matHeaderCellDef> Brand </th>
+            <td mat-cell *matCellDef="let element"> {{element.brand}} </td>
+          </ng-container>
+
+           <!-- Symbol Column -->
+           <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef> Quantity </th>
+            <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="serialNumber">
+            <th mat-header-cell *matHeaderCellDef> Serial Number </th>
+            <td mat-cell *matCellDef="let element"> {{element.serialNumber}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumnsDevices"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumnsDevices;"></tr>
+        </table>
+
+
+
+
+      </mat-tab>
+      <mat-tab label="Users">
 
 
 

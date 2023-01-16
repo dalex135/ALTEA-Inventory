@@ -15,38 +15,38 @@ namespace ALTEA_Server.Controllers
             _schoolService = schoolService;
         }
 
-        [HttpGet("GetSchool/{id}")]
-        public async Task<ActionResult<School>> GetSchool(int id)
+        [HttpGet("GetByID/{id}")]
+        public async Task<ActionResult<School>> Get(int id)
         {
             return Ok(await _schoolService.GetSchoolByID(id));
         }
 
-        [HttpGet("GetAllSchool")]
-        public async Task<ActionResult<List<School>>> GetAllSchool()
+        [HttpGet("GetAll")]
+        public async Task<ActionResult<List<School>>> GetAll()
         {
             return Ok(await _schoolService.GetAllSchools());
         }
 
-        [HttpPost("SaveSchool")]
-        public void SaveSchool(School school)
+        [HttpPost("Save")]
+        public void Save(School school)
         {
             _schoolService.SaveSchool(school);
         }
 
-        [HttpPost("SaveSchools")]
-        public void SaveSchool(List<School> schools)
+        [HttpPost("SaveAll")]
+        public void Save(List<School> schools)
         {
             _schoolService.SaveSchools(schools);
         }
 
-        [HttpDelete("DeleteSchool")]
-        public void DeleteSchool(School school)
+        [HttpDelete("Delete")]
+        public void Delete(School school)
         {
             _schoolService.DeleteSchool(school);
         }
 
-        [HttpPut("UpdateSchool")]
-        public void UpdateSchool(School school)
+        [HttpPut("Update")]
+        public void Update(School school)
         {
             _schoolService.UpdateSchool(school);
         }
