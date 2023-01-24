@@ -17,20 +17,21 @@ namespace ALTEA_Server.Services
             return Task.FromResult(true);
         }
 
-        public void SaveUser(User user)
+        public Task<bool> SaveUser(User user)
         {
             _dataContext.Users.Add(user);
             _dataContext.SaveChanges();
-
+            return Task.FromResult(true);
         }
 
-        public void SaveUsers(List<User> users)
+        public Task<bool> SaveUsers(List<User> users)
         {
             users.ForEach(user =>
             {
                 _dataContext.Users.Add(user);
                 _dataContext.SaveChanges();
             });
+            return Task.FromResult(true);
 
         }
         public async Task<User> GetUserByUserName(string username)
@@ -57,6 +58,11 @@ namespace ALTEA_Server.Services
             return await _dataContext.Users.ToListAsync();
         }
 
+        public async Task<List<User>> GetAllPrincipals()
+        {
+            return await _dataContext.Users.Where(u => u.UserType == UserType.Principal).ToListAsync();
+        }
+
         public void DeleteUser(User user)
         {
             var removeUser = _dataContext.Users.FirstOrDefault(d => d.Id == user.Id);
@@ -70,7 +76,7 @@ namespace ALTEA_Server.Services
             var updateUser = _dataContext.Users.FirstOrDefault(d => d.Id == user.Id)!;
             updateUser.Name = user.Name;
             updateUser.PhoneNumber = user.PhoneNumber;
-            updateUser.EmailAddress = user.EmailAddress;
+            updateUser.Email = user.Email;
             updateUser.Password = user.Password;
             _dataContext.SaveChanges();
         }

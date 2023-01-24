@@ -13,18 +13,23 @@ namespace ALTEA_Server.Services
             _dataContext = dataContext;
         }
 
-        public  void SaveDevice(Device device)
+        public Task<bool> SaveDevice(Device device)
         {
-            var school = _dataContext.Schools.FirstOrDefault(school => school.Id == device.School.Id)!;
+            var school = _dataContext.Schools.FirstOrDefault(school => school.Id == device.SchoolForeignKey)!;
             if (school is not null)
             {
                 device.School = (School)school;
                 
             }
             else
+            {
+                device.SchoolForeignKey = null;
                 device.School = null;
+            }
+                
             _dataContext.Devices.Add(device);
             _dataContext.SaveChanges();
+            return Task.FromResult(true);
 
         }
 

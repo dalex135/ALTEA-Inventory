@@ -1,0 +1,65 @@
+<div style="border: 0.01px solid rgb(192, 192, 192);">
+  <div style="margin-top:20px; margin-left: 20px;;text-align: center;">
+    <span style="display:inline-block; width: 20px;"></span>
+    <form [formGroup]="deviceForm">
+
+      <h2>Adding a Device</h2>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="description">
+      </mat-form-field>
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Type</mat-label>
+        <input matInput formControlName="type">
+      </mat-form-field>
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+      <mat-form-field  appearance="outline">
+        <mat-label>Brand</mat-label>
+        <input matInput formControlName="brand">
+      </mat-form-field>
+
+
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+
+      <mat-form-field  appearance="outline">
+        <mat-label>Serial Number</mat-label>
+        <input matInput formControlName="serialNumber">
+      </mat-form-field>
+
+      <span  style="display:inline-block; width: 20px;"></span>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Quantity</mat-label>
+        <input matInput formControlName="quantity">
+      </mat-form-field>
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+      <mat-form-field appearance="outline">
+        <mat-label>School</mat-label>
+
+        <mat-select formControlName="school">
+          <mat-option *ngFor="let school of allSchools" [value]="school.id">
+            {{school.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+
+
+    </form>
+  </div>
+  <div style="margin-bottom:20px;margin-left: 20px;text-align: center;">
+    <button mat-raised-button color="primary" (click)="add()">Add</button>
+  </div>
+</div>

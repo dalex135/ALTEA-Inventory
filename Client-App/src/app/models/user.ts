@@ -5,4 +5,5 @@ export interface User{
     password: string;
     phoneNumber: string;
     email: string;
+    userType: string;
 }

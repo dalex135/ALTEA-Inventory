@@ -8,12 +8,15 @@ import { User } from '../models/user';
 })
 export class UserAccountService {
 
-user:User = {id: 0,
+user:User = {
+  id: 0,
   name: '',
   userName: '',
   password: '',
   phoneNumber: '',
-  email: ''};
+  email: '',
+  userType:''};
+
 httpClient: HttpClient;
 readonly LOGIN_ROOT_URL = 'http://localhost:5218/User/GetByUserName';
 

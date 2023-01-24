@@ -12,22 +12,24 @@ namespace ALTEA_Server.Services
             _dataContext = dataContext;
         }
 
-        public void SaveSchool(School school)
+        public Task<bool> SaveSchool(School school)
         {
-            var principal = _dataContext.Users.FirstOrDefault(user => user.Id == school.Principal.Id)!;
+            var principal = _dataContext.Users.FirstOrDefault(user => user.Id == school.PrincipalForeignKey)!;
             if (principal is not null) {
                 school.Principal = (User)principal;
             }
             else
             {
+                school.PrincipalForeignKey = null;
                 school.Principal = null;
             }
             _dataContext.Schools.Add(school);
             _dataContext.SaveChanges();
+            return Task.FromResult(true);
 
         }
 
-        public void SaveSchools(List<School> schools)
+        public Task<bool> SaveSchools(List<School> schools)
         {
 
             schools.ForEach(school =>
@@ -35,6 +37,7 @@ namespace ALTEA_Server.Services
                 _dataContext.Schools.Add(school);
                 _dataContext.SaveChanges();
             });
+            return Task.FromResult(true);
 
         }
 
@@ -67,7 +70,7 @@ namespace ALTEA_Server.Services
             updateSchool.Name = school.Name;
             updateSchool.PhoneNumber = school.PhoneNumber;
             updateSchool.Principal = school.Principal;
-            updateSchool.EmailAddress = school.EmailAddress;
+            updateSchool.Email = school.Email;
             updateSchool.Address = school.Address;
             _dataContext.SaveChanges();
         }

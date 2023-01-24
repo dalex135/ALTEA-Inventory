@@ -25,11 +25,12 @@ export class LoginComponent  {
    }
 
   logIn(){
+    this.router.navigate(['inventory']);
     console.log(this.form);
     this.userAccountService.login(this.form.username, this.form.password).subscribe(user => {
       if (user != null){
         this.userAccountService.user = user;
-        this.router.navigate(['am']);
+        this.router.navigate(['inventory']);
       }
 
     });
