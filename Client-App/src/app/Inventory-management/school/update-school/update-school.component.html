@@ -1,0 +1,49 @@
+<div style="border: 0.01px solid rgb(192, 192, 192);">
+  <div style="margin-top:20px; margin-left: 20px;;text-align: center;">
+    <span style="display:inline-block; width: 20px;"></span>
+    <form [formGroup]="schoolForm">
+
+      <h2>Adding a School</h2>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Principal</mat-label>
+        <input matInput formControlName="principal">
+      </mat-form-field>
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+      <mat-form-field  appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+      </mat-form-field>
+
+      <span  style="display:inline-block; width: 20px;"></span>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Phone Number</mat-label>
+        <input matInput formControlName="phoneNumber">
+      </mat-form-field>
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+
+      <mat-form-field  appearance="outline">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="address">
+      </mat-form-field>
+
+      <span  style="display:inline-block; width: 20px;"></span>
+
+    </form>
+  </div>
+  <div style="margin-bottom:20px;margin-left: 20px;text-align: center;">
+    <button mat-raised-button color="primary" (click)="add()">Update</button>
+  </div>
+</div>

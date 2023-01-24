@@ -1,9 +1,11 @@
+import { School } from "./school";
 
 export interface Device{
   id: number;
-  name: string;
+  description: string;
   serialNumber: string;
   type: string;
   brand: string;
   quantity: string;
+  school: School;
 }

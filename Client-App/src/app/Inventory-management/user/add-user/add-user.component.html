@@ -1,0 +1,62 @@
+<div style="border: 0.01px solid rgb(192, 192, 192);">
+  <div style="margin-top:20px; margin-left: 20px;;text-align: center;">
+    <span style="display:inline-block; width: 20px;"></span>
+    <form [formGroup]="userForm">
+
+      <h2>Adding a User</h2>
+
+
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+      <mat-form-field  appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="userName">
+      </mat-form-field>
+
+      <span  style="display:inline-block; width: 20px;"></span>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password">
+      </mat-form-field>
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+
+      <mat-form-field  appearance="outline">
+        <mat-label>Phone Number</mat-label>
+        <input matInput formControlName="phoneNumber">
+      </mat-form-field>
+
+      <span  style="display:inline-block; width: 20px;"></span>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email Address</mat-label>
+        <input matInput formControlName="email">
+      </mat-form-field>
+
+      <span  style="display:inline-block; width: 20px;"></span>
+
+
+      <mat-form-field appearance="outline">
+        <mat-label>User Type</mat-label>
+        <mat-select formControlName="userType">
+          <mat-option *ngFor="let userType of userTypes" [value]="userType">
+            {{userType}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+    </form>
+  </div>
+  <div style="margin-bottom:20px;margin-left: 20px;text-align: center;">
+    <button mat-raised-button color="primary" (click)="add()">Add</button>
+  </div>
+</div>

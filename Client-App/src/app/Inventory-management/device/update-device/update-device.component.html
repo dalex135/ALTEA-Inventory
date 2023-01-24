@@ -1,18 +1,26 @@
-<div style="border: 0.01px solid rgb(192, 192, 192);">deviceForm
-  <div style="margin-top:20px;">
-    <!-- <form [formGroup]="deviceForm">
+<div style="border: 0.01px solid rgb(192, 192, 192);">
+  <div style="margin-top:20px; margin-left: 20px;;text-align: center;">
+    <span style="display:inline-block; width: 20px;"></span>
+    <form [formGroup]="deviceForm">
 
-      <h2>Adding a device</h2>
+      <h2>Updating a Device</h2>
 
       <mat-form-field appearance="outline">
-        <mat-label>Device Type</mat-label>
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="description">
+      </mat-form-field>
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Type</mat-label>
         <input matInput formControlName="type">
       </mat-form-field>
 
       <span style="display:inline-block; width: 20px;"></span>
 
       <mat-form-field  appearance="outline">
-        <mat-label>Device Brand</mat-label>
+        <mat-label>Brand</mat-label>
         <input matInput formControlName="brand">
       </mat-form-field>
 
@@ -26,7 +34,7 @@
       <span style="display:inline-block; width: 20px;"></span>
 
 
-      <mat-form-field appearance="outline">
+      <mat-form-field  appearance="outline">
         <mat-label>Serial Number</mat-label>
         <input matInput formControlName="serialNumber">
       </mat-form-field>
@@ -38,9 +46,11 @@
         <input matInput formControlName="quantity">
       </mat-form-field>
 
-    </form> -->
+      <span style="display:inline-block; width: 20px;"></span>
+
+    </form>
   </div>
-  <div style="margin-bottom:20px;">
-    <button mat-raised-button color="primary" >Add device</button>
+  <div style="margin-bottom:20px;margin-left: 20px;text-align: center;">
+    <button mat-raised-button color="primary" (click)="add()">Update</button>
   </div>
 </div>
