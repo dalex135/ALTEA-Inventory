@@ -83,7 +83,7 @@ import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
     MatSortModule,
     MatToolbarModule,
     AgmCoreModule.forRoot({
-      apiKey:'AIzaSyCNc1m1jxeRFvdnKllUpjQbhPNlY6tJveo',
+      apiKey:,
     }),
     IvyCarouselModule,
     YouTubePlayerModule,
