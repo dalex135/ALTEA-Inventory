@@ -14,9 +14,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BodyComponent } from './body/body.component';
 import { LoginComponent } from './login/login.component';
@@ -33,6 +34,11 @@ import { UpdateSchoolComponent } from './inventory-management/school/update-scho
 import { UpdateUserComponent } from './inventory-management/user/update-user/update-user.component';
 import { InventoryTableComponent } from './inventory-management/inventory-table/inventory-table.component';
 import { AddUserComponent } from './inventory-management/user/add-user/add-user.component';
+import { AgmCoreModule } from '@agm/core';
+import { YouTubePlayerModule } from '@angular/youtube-player';
+import { IvyCarouselModule} from 'angular-responsive-carousel';
+import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 
 @NgModule({
   declarations: [
@@ -51,7 +57,8 @@ import { AddUserComponent } from './inventory-management/user/add-user/add-user.
     UpdateSchoolComponent,
     UpdateUserComponent,
     InventoryTableComponent,
-    AddUserComponent
+    AddUserComponent,
+
 
    ],
   imports: [
@@ -74,6 +81,14 @@ import { AddUserComponent } from './inventory-management/user/add-user/add-user.
     MatAutocompleteModule,
     MatPaginatorModule,
     MatSortModule,
+    MatToolbarModule,
+    AgmCoreModule.forRoot({
+      apiKey:'AIzaSyCNc1m1jxeRFvdnKllUpjQbhPNlY6tJveo',
+    }),
+    IvyCarouselModule,
+    YouTubePlayerModule,
+    NgbCarouselModule,
+    MdbCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -50,4 +50,49 @@ export class RestService {
     {headers:this.configService.getHeader(), responseType: 'json'});
   }
 
+  getUser(id:number):Observable<User>{
+    return this.http.get<User>(this.configService.getURL('User','GetByID', String(id)),
+    {headers:this.configService.getHeader(), responseType: 'json'});
+  }
+
+  removeUser(id:number):Observable<any>{
+    return this.http.delete<User>(this.configService.getURL('User','Delete', String(id)),
+    {headers:this.configService.getHeader(), responseType: 'json'});
+  }
+
+  updateUser(user:any):Observable<any>{
+    return this.http.put<User>(this.configService.getURL('User','Update'), user,
+    {headers:this.configService.getHeader(), responseType: 'json'});
+  }
+
+  getSchool(id:number):Observable<School>{
+    return this.http.get<School>(this.configService.getURL('School','GetByID', String(id)),
+    {headers:this.configService.getHeader(), responseType: 'json'});
+  }
+
+  removeSchool(id:number):Observable<any>{
+    return this.http.delete<School>(this.configService.getURL('School','Delete', String(id)),
+    {headers:this.configService.getHeader(), responseType: 'json'});
+  }
+
+  updateSchool(school:any):Observable<any>{
+    return this.http.put<School>(this.configService.getURL('School','Update'), school,
+    {headers:this.configService.getHeader(), responseType: 'json'});
+  }
+
+  getDevice(id:number):Observable<Device>{
+    return this.http.get<Device>(this.configService.getURL('Device','GetByID', String(id)),
+    {headers:this.configService.getHeader(), responseType: 'json'});
+  }
+
+  removeDevice(id:number):Observable<any>{
+    return this.http.delete<Device>(this.configService.getURL('Device','Delete', String(id)),
+    {headers:this.configService.getHeader(), responseType: 'json'});
+  }
+
+  updateDevice(device:any):Observable<any>{
+    return this.http.put<Device>(this.configService.getURL('Device','Update'), device,
+    {headers:this.configService.getHeader(), responseType: 'json'});
+  }
+
 }

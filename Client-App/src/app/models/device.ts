@@ -1,6 +1,7 @@
 import { School } from "./school";
 
 export interface Device{
+
   id: number;
   description: string;
   serialNumber: string;
@@ -8,4 +9,5 @@ export interface Device{
   brand: string;
   quantity: string;
   school: School;
+  schoolForeignKey: number;
 }

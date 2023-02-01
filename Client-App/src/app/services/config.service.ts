@@ -22,4 +22,27 @@ export class ConfigService {
           'Access-Control-Allow-Credentials': 'true',
           'content-type': 'application/json'}
   }
+
+  getNullSchool(){
+    return {
+      id: 0,
+      name: '',
+      phoneNumber: '',
+      email: '',
+      address:'',
+      principalForeignKey:0,
+      principal: this.getNullUser()
+    }
+  }
+
+  getNullUser(){
+    return {
+      id: 0,
+      name: '',
+      userName: '',
+      password: '',
+      phoneNumber: '',
+      email: '',
+      userType:''};
+  }
 }

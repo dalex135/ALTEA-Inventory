@@ -6,7 +6,7 @@
         Task<Device> GetDeviceByID(int id);
         Task<bool> SaveDevice(Device device);
         void SaveDevices(List<Device> device);
-        void UpdateDevice(Device device);
-        void DeleteDevice(Device device);
+        Task<bool> UpdateDevice(Device device);
+        Task<bool> DeleteDevice(long id);
     }
 }

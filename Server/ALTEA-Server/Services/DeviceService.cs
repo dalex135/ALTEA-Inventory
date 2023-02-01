@@ -57,15 +57,19 @@ namespace ALTEA_Server.Services
             return await _dataContext.Devices.ToListAsync();
         }
 
-        public void DeleteDevice(Device device)
+        public Task<bool> DeleteDevice(long id)
         {
-            var removeDevice =  _dataContext.Devices.FirstOrDefault(d=>d.Id==device.Id);
-            if (removeDevice is not null)
+            var removeDevice =  _dataContext.Devices.FirstOrDefault(d=>d.Id==id);
+            if (removeDevice is not null) {
                 _dataContext.Remove(removeDevice);
                 _dataContext.SaveChanges();
+                return Task.FromResult(true);
+            }else
+                return Task.FromResult(false);
+
         }
 
-        public void UpdateDevice(Device device)
+        public Task<bool> UpdateDevice(Device device)
         {
             var updateDevice = _dataContext.Devices.FirstOrDefault(d => d.Id == device.Id)!;
             updateDevice.Description = device.Description;
@@ -75,6 +79,7 @@ namespace ALTEA_Server.Services
             updateDevice.Brand = device.Brand;
             updateDevice.Type = device.Type;
             _dataContext.SaveChanges();
+            return Task.FromResult(true);
         }
     }
 }

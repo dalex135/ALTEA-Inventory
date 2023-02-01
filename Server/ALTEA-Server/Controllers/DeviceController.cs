@@ -62,10 +62,10 @@ namespace ALTEA_Server.Controllers
         /// 
         /// </summary>
         /// <param name="device"></param>
-        [HttpDelete("Delete")]
-        public  void Delete(Device device)
+        [HttpDelete("Delete/{id}")]
+        public Task<bool> Delete(long id)
         {
-            _deviceService.DeleteDevice(device);
+            return _deviceService.DeleteDevice(id);
         }
 
         /// <summary>
@@ -73,9 +73,9 @@ namespace ALTEA_Server.Controllers
         /// </summary>
         /// <param name="device"></param>
         [HttpPut("Update")]
-        public  void Update(Device device)
+        public Task<bool> Update(Device device)
         {
-            _deviceService.UpdateDevice (device);
+            return _deviceService.UpdateDevice (device);
         }
 
     }

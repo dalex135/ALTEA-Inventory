@@ -15,9 +15,9 @@ import { UserAccountService } from 'src/app/services/userAccount.service';
 })
 export class InventoryTableComponent  {
 
-  displayedColumnsDevices: string[] = ['description', 'type', 'brand', 'quantity', 'serialNumber', 'school'];
-  displayedColumnsSchools: string[] = ['name', 'principal', 'email', 'phoneNumber', 'address'];
-  displayedColumnsUsers: string[] = ['name', 'userName', 'phoneNumber', 'email', 'userType'];
+  displayedColumnsDevices: string[] = ['id', 'description', 'type', 'brand', 'quantity', 'serialNumber', 'school'];
+  displayedColumnsSchools: string[] = ['id', 'name', 'principal', 'email', 'phoneNumber', 'address'];
+  displayedColumnsUsers: string[] = ['id', 'name', 'userName', 'phoneNumber', 'email', 'userType'];
 
   datasourceDevices: any;
   datasourceSchools: any;
@@ -26,40 +26,51 @@ export class InventoryTableComponent  {
   constructor(
     private restService: RestService) {
 
-      restService.getAllDevices().subscribe(
-      devices=>{
-
-        devices.forEach(device=>{
-          if (device.school==null){
-              device.school = this.getNullSchool();
-          }
-          }
-        )
-        this.datasourceDevices = devices;
-      }
-      )
-
-      restService.getAllSchools().subscribe(
-      schools=>{
-
-        schools.forEach(school=>{
-            if (school.principal==null){
-              school.principal = this.getNullPrincipal();
-            }else{
-              console.log(school.principal)
-            }
-          }
-          )
-
-        this.datasourceSchools = schools;
-      }
-      )
-
+      //////////////////////////////////////////////////USER-RESTSEVICE-START
       restService.getAllUsers().subscribe(
         users=>{
           this.datasourceUsers= users;
+          //////////////////////////////////////////////SCHOOL-RESTSEVICE-START
+          restService.getAllSchools().subscribe(
+            schools=>{
+              schools.forEach(school=>{
+                  if (school.principalForeignKey==null){
+                    school.principal = this.getNullPrincipal();
+                  }else{
+                    users.forEach(u=>{
+                      if(u.id==school.principalForeignKey)
+                        school.principal = u;
+                    });
+                  }
+                }
+                )
+              this.datasourceSchools = schools;
+              ///////////////////////////////////////////DEVICE-RESTSERVICE-START
+              restService.getAllDevices().subscribe(
+                devices=>{
+                  devices.forEach(device=>{
+                    if (device.schoolForeignKey==null){
+                      device.school = this.getNullSchool();
+                    }else{
+                      schools.forEach(s=>{
+                        if(s.id==device.schoolForeignKey)
+                        device.school = s;
+                      })
+                    }
+                  }
+                  )
+                  this.datasourceDevices = devices;
+                }
+                )
+                //////////////////////////////////////DEVICE-RESTSERVICE-END
+            }
+            )
+            //////////////////////////////////////////SCHOOL-RESTSEVICE-END
         }
       )
+      ////////////////////////////////////////////////USER-RESTSEVICE-END
+
+
   }
 
   getNullSchool(){
@@ -69,6 +80,7 @@ export class InventoryTableComponent  {
       phoneNumber: '',
       email: '',
       address:'',
+      principalForeignKey:0,
       principal: this.getNullPrincipal()
     }
   }

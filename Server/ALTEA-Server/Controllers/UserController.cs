@@ -93,10 +93,10 @@ namespace ALTEA_Server.Controllers
         /// 
         /// </summary>
         /// <param name="user"></param>
-        [HttpDelete("Delete")]
-        public void Delete(User user)
+        [HttpDelete("Delete/{id}")]
+        public Task<bool> Delete(long id)
         {
-            _userService.DeleteUser(user);
+            return _userService.DeleteUser(id);
         }
 
         /// <summary>
@@ -104,9 +104,9 @@ namespace ALTEA_Server.Controllers
         /// </summary>
         /// <param name="user"></param>
         [HttpPut("Update")]
-        public void Update(User user)
+        public Task<bool> Update(User user)
         {
-            _userService.UpdateUser(user);
+            return _userService.UpdateUser(user);
         }
     }
 }

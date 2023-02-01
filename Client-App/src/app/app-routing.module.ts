@@ -11,7 +11,6 @@ import { RemoveSchoolComponent } from './inventory-management/school/remove-scho
 import { RemoveUserComponent } from './inventory-management/user/remove-user/remove-user.component';
 import { AddUserComponent } from './inventory-management/user/add-user/add-user.component';
 import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './services/auth.guard';
 import { UpdateUserComponent } from './inventory-management/user/update-user/update-user.component';
 
 const routes: Routes = [

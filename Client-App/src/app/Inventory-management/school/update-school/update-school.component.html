@@ -1,49 +1,66 @@
-<div style="border: 0.01px solid rgb(192, 192, 192);">
+<div class="center" style="border: 0.01px solid rgb(192, 192, 192);">
   <div style="margin-top:20px; margin-left: 20px;;text-align: center;">
     <span style="display:inline-block; width: 20px;"></span>
-    <form [formGroup]="schoolForm">
 
-      <h2>Adding a School</h2>
+    <div style="margin-bottom:20px;margin-left: 20px;text-align: left;">
+      <button mat-raised-button  (click)="goHome()">Home</button>
+    </div>
+
+      <h2>Update School</h2>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Enter the User ID to update</mat-label>
+        <input matInput [(ngModel)]="updateID">
+      </mat-form-field>
+
+      <span style="display:inline-block; height: 60px;"></span>
+
+      <div style="margin-bottom:20px;text-align: center;">
+        <button mat-raised-button color="primary" (click)="selectVerifyUser()">Select and Verify</button>
+      </div>
+
+      <hr>
+
+      <span style="display:inline-block; height: 60px;"></span>
 
       <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
-        <input matInput formControlName="name">
-      </mat-form-field>
-
-      <span style="display:inline-block; width: 20px;"></span>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Principal</mat-label>
-        <input matInput formControlName="principal">
+        <input matInput [(ngModel)]="school.name">
       </mat-form-field>
 
       <span style="display:inline-block; width: 20px;"></span>
 
       <mat-form-field  appearance="outline">
-        <mat-label>Email</mat-label>
-        <input matInput formControlName="email">
+        <mat-label>Username</mat-label>
+        <input [readonly]="true" matInput [(ngModel)]="school.principal.name">
       </mat-form-field>
 
-      <span  style="display:inline-block; width: 20px;"></span>
+      <span style="display:inline-block; width: 20px;"></span>
 
       <mat-form-field appearance="outline">
+        <mat-label>Email Address</mat-label>
+        <input  matInput [(ngModel)]="school.email">
+      </mat-form-field>
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+
+      <mat-form-field  appearance="outline">
         <mat-label>Phone Number</mat-label>
-        <input matInput formControlName="phoneNumber">
-      </mat-form-field>
-
-      <span style="display:inline-block; width: 20px;"></span>
-
-
-      <mat-form-field  appearance="outline">
-        <mat-label>Address</mat-label>
-        <input matInput formControlName="address">
+        <input  matInput [(ngModel)]="school.phoneNumber">
       </mat-form-field>
 
       <span  style="display:inline-block; width: 20px;"></span>
 
-    </form>
+      <mat-form-field appearance="outline">
+        <mat-label>Address</mat-label>
+        <input  matInput [(ngModel)]="school.address">
+      </mat-form-field>
+
+      <span  style="display:inline-block; width: 20px;"></span>
+
   </div>
   <div style="margin-bottom:20px;margin-left: 20px;text-align: center;">
-    <button mat-raised-button color="primary" (click)="add()">Update</button>
+    <button mat-raised-button color="primary" (click)="update()">Update</button>
   </div>
 </div>

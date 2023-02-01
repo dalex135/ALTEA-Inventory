@@ -1,9 +1,13 @@
-<div style="border: 0.01px solid rgb(192, 192, 192);">
+<div class="center" style="border: 0.01px solid rgb(192, 192, 192);">
   <div style="margin-top:20px; margin-left: 20px;;text-align: center;">
     <span style="display:inline-block; width: 20px;"></span>
     <form [formGroup]="schoolForm">
 
-      <h2>Adding a School</h2>
+      <div style="margin-bottom:20px;margin-left: 20px;text-align: left;">
+        <button mat-raised-button  (click)="goHome()">Home</button>
+      </div>
+
+      <h2>Add School</h2>
 
       <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>

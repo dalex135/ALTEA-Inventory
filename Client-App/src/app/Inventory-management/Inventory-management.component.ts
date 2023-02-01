@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Device } from '../models/device';
-import { School } from '../models/school';
-import { MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { UserAccountService } from '../services/userAccount.service';
 import { ConfigService } from '../services/config.service';
-import { User } from '../models/user';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,15 +13,12 @@ export class InventoryManagementComponent {
 
   userAccountService: UserAccountService
 
-  constructor(private http: HttpClient,
-            private configService: ConfigService,
-            private router:Router,
+  constructor(private router:Router,
             userAccountService: UserAccountService,) {
 
               this.userAccountService = userAccountService
 
   }
-
   addUser(){
     this.router.navigate(['add-user']);
   }
@@ -36,7 +28,6 @@ export class InventoryManagementComponent {
   updateUser(){
     this.router.navigate(['update-user']);
   }
-
   addSchool(){
     this.router.navigate(['add-school']);
   }

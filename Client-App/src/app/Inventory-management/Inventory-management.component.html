@@ -1,48 +1,63 @@
-<div style="margin-top: 20px; margin-bottom: 20px; margin-left: 20px; margin-right: 20px; text-align: center;">
-  <button mat-button [matMenuTriggerFor]="menu">
-      <mat-icon>more_vert</mat-icon>
+
+<p>
+  <mat-toolbar >
+   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
   </button>
+
+  <span class="example-spacer"></span>
+  <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+   <mat-icon>share</mat-icon>
+ </button> -->
+ <button mat-button [matMenuTriggerFor]="account">
+  <mat-icon>account_box</mat-icon>
+</button>
+
+</mat-toolbar>
+</p>
+
+<div style="margin-top: 20px; margin-bottom: 20px; margin-left: 20px; margin-right: 20px; text-align: center;">
+
 
   <span style="display:inline-block; width: 85%;"></span>
 
-  <button mat-button [matMenuTriggerFor]="account">
-    <mat-icon>account_circle</mat-icon>
-  </button>
-
   <h1 class="center">Inventory of ALTEA Charity Organization</h1>
 
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item [matMenuTriggerFor]="users">Users</button>
-    <button mat-menu-item [matMenuTriggerFor]="schools">Schools</button>
-    <button mat-menu-item [matMenuTriggerFor]="devices">Devices</button>
+  <mat-menu  #menu="matMenu">
+    <button class="menu-item" mat-menu-item [matMenuTriggerFor]="users">Users</button>
+    <button class="menu-item" mat-menu-item [matMenuTriggerFor]="schools">Schools</button>
+    <button class="menu-item" mat-menu-item [matMenuTriggerFor]="devices">Devices</button>
 
   </mat-menu>
 
-  <mat-menu #users="matMenu">
+  <mat-menu class="menu-class" #users="matMenu">
     <button mat-menu-item (click)="addUser()">Add a User/Users</button>
     <button mat-menu-item (click)="removeUser()">Remove a User/Users</button>
     <button mat-menu-item (click)="updateUser()">Update a User/Users</button>
   </mat-menu>
 
-  <mat-menu #schools="matMenu">
+  <mat-menu class="menu-class" #schools="matMenu">
     <button mat-menu-item (click)="addSchool()">Add a School/Schools</button>
     <button mat-menu-item (click)="removeSchool()">Remove a School/Schools</button>
     <button mat-menu-item (click)="updateSchool()">Update a School/Schools</button>
   </mat-menu>
 
-  <mat-menu #devices="matMenu">
+  <mat-menu class="menu-class" #devices="matMenu">
     <button mat-menu-item (click)="addDevice()">Add a Device/Devices</button>
     <button mat-menu-item (click)="removeDevice()">Remove a Device/Devices</button>
     <button mat-menu-item (click)="updateDevice()">Update a Device/Devices</button>
   </mat-menu>
 
-
-
-  <mat-menu #account="matMenu">
+  <mat-menu  class="menu-class" #account="matMenu">
     <label mat-menu-item>{{userAccountService.user.userName}}</label>
     <button mat-menu-item>Change Password</button>
     <button mat-menu-item>Log Out</button>
   </mat-menu>
+
+
 </div>
 
 <app-inventory-table></app-inventory-table>

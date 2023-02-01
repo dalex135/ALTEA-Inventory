@@ -62,16 +62,21 @@ namespace ALTEA_Server.Controllers
         /// 
         /// </summary>
         /// <param name="school"></param>
-        [HttpDelete("Delete")]
-        public void Delete(School school)
+        [HttpDelete("Delete/{id}")]
+        public Task<bool> Delete(long id)
         {
-            _schoolService.DeleteSchool(school);
+            return _schoolService.DeleteSchool(id);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="school"></param>
+        /// <returns></returns>
         [HttpPut("Update")]
-        public void Update(School school)
+        public Task<bool> Update(School school)
         {
-            _schoolService.UpdateSchool(school);
+            return _schoolService.UpdateSchool(school);
         }
     }
 }

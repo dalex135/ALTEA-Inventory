@@ -56,15 +56,28 @@ namespace ALTEA_Server.Services
             return await _dataContext.Schools.ToListAsync();
         }
 
-        public void DeleteSchool(School school)
+        public Task<bool> DeleteSchool(long id)
         {
-            var removeSchool = _dataContext.Schools.FirstOrDefault(d => d.Id == school.Id);
-            if (removeSchool is not null)
+            var removeSchool = _dataContext.Schools.FirstOrDefault(school => school.Id == id);
+            
+            if (removeSchool is not null) {
+                _dataContext.Devices.ToList().ForEach(device =>
+                {
+                    if (device.SchoolForeignKey == id)
+                    {
+                        device.SchoolForeignKey = null;
+                        _dataContext.SaveChanges();
+                    }
+                });
                 _dataContext.Remove(removeSchool);
                 _dataContext.SaveChanges();
+
+                return Task.FromResult(true);
+            }
+            else return Task.FromResult(false);
         }
 
-        public void UpdateSchool(School school)
+        public Task<bool> UpdateSchool(School school)
         {
             var updateSchool = _dataContext.Schools.FirstOrDefault(d => d.Id == school.Id)!;
             updateSchool.Name = school.Name;
@@ -73,6 +86,7 @@ namespace ALTEA_Server.Services
             updateSchool.Email = school.Email;
             updateSchool.Address = school.Address;
             _dataContext.SaveChanges();
+            return Task.FromResult(true);
         }
     }
 }

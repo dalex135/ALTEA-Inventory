@@ -63,22 +63,41 @@ namespace ALTEA_Server.Services
             return await _dataContext.Users.Where(u => u.UserType == UserType.Principal).ToListAsync();
         }
 
-        public void DeleteUser(User user)
+        public Task<bool> DeleteUser(long id)
         {
-            var removeUser = _dataContext.Users.FirstOrDefault(d => d.Id == user.Id);
+            var removeUser = _dataContext.Users.FirstOrDefault(d => d.Id == id);
+            
             if (removeUser is not null)
+            {
+                _dataContext.Schools.ToList().ForEach(school =>
+                {
+                    if (school.PrincipalForeignKey == id)
+                    {
+                        school.PrincipalForeignKey = null;
+                        _dataContext.SaveChanges();
+                    }
+                });
                 _dataContext.Remove(removeUser);
                 _dataContext.SaveChanges();
+                return Task.FromResult(true);
+            }
+            else
+                return Task.FromResult(false);
+
         }
 
-        public void UpdateUser(User user)
+        public Task<bool> UpdateUser(User user)
         {
+            
             var updateUser = _dataContext.Users.FirstOrDefault(d => d.Id == user.Id)!;
             updateUser.Name = user.Name;
             updateUser.PhoneNumber = user.PhoneNumber;
             updateUser.Email = user.Email;
             updateUser.Password = user.Password;
+            updateUser.UserName = user.UserName;
             _dataContext.SaveChanges();
+            return Task.FromResult(true);
+            
         }
     }
 }

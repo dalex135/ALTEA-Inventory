@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { School } from 'src/app/models/school';
 import { User } from 'src/app/models/user';
 import { ConfigService } from 'src/app/services/config.service';
@@ -19,7 +20,8 @@ export class AddSchoolComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
-    private restService: RestService) {
+    private restService: RestService,
+    private router: Router) {
 
     this.schoolForm = this.formBuilder.group({
       name: ['', Validators.nullValidator],
@@ -82,5 +84,9 @@ export class AddSchoolComponent implements OnInit {
       phoneNumber: ['', Validators.nullValidator],
       address: ['', Validators.nullValidator],
     });
+  }
+
+  goHome(){
+    this.router.navigate(['inventory']);
   }
 }

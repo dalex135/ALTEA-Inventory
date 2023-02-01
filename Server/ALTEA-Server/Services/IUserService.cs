@@ -3,13 +3,13 @@
     public interface IUserService
     {
         Task<bool> authenticate(object obj);
-        void DeleteUser(User user);
+        Task<bool> DeleteUser(long id);
         Task<List<User>> GetAllUsers();
         Task<List<User>> GetAllPrincipals();
         Task<User> GetUserByID(int id);
         Task<User> GetUserByUserName(string username);
         Task<bool> SaveUser(User user);
         Task<bool> SaveUsers(List<User> users);
-        void UpdateUser(User user);
+        Task<bool> UpdateUser(User user);
     }
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Device } from 'src/app/models/device';
 import { School } from 'src/app/models/school';
 import { ConfigService } from 'src/app/services/config.service';
@@ -20,7 +21,8 @@ export class AddDeviceComponent  {
 
   constructor(private formBuilder: FormBuilder,
               private snackBar: MatSnackBar,
-              private restService:RestService) {
+              private restService:RestService,
+              private router: Router) {
 
     this.deviceForm = this.formBuilder.group({
       description: ['', Validators.nullValidator],
@@ -76,6 +78,10 @@ export class AddDeviceComponent  {
       school: ['', Validators.nullValidator],
     });
 
+  }
+
+  goHome(){
+    this.router.navigate(['inventory']);
   }
 
 }
