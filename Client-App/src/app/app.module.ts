@@ -116,7 +116,7 @@ import { DonorsComponent } from './landing-page/recipients-donors/donors/donors.
     MatSortModule,
     MatToolbarModule,
     AgmCoreModule.forRoot({
-      apiKey:'AIzaSyCNc1m1jxeRFvdnKllUpjQbhPNlY6tJveo',
+      apiKey:'',
     }),
     YouTubePlayerModule,
     NgbModule,
