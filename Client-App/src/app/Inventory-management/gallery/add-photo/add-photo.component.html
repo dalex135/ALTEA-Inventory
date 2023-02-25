@@ -1,0 +1,57 @@
+<div class="center" style="border: 0.01px solid rgb(192, 192, 192);">
+  <div style="margin-top:20px; margin-left: 20px;;text-align: center;">
+    <span style="display:inline-block; width: 20px;"></span>
+    <form [formGroup]="photoForm">
+
+      <div style="margin-bottom:20px;margin-left: 20px;text-align: left;">
+        <button mat-raised-button  (click)="goHome()">Home</button>
+      </div>
+
+
+      <h2>Add Photo</h2>
+
+      <div>
+        <button type="button" mat-raised-button (click)="fileInput.click()">Choose an Image</button>
+        <input formControlName="file" hidden (change)="onFileSelected($event)" #fileInput type="file" id="file">
+        <span style="display:inline-block; height: 20px;"></span>
+      </div>
+
+      <hr>
+      <div *ngIf="selectedImage">
+        <img  class="images" [src]="selectedImage" alt="" style="max-width: 500px;"/>
+        <hr>
+      </div>
+
+
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+      <mat-form-field  appearance="outline">
+        <mat-label>Description</mat-label>
+        <input  matInput formControlName="description">
+      </mat-form-field>
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+
+
+      <mat-form-field appearance="outline">
+        <mat-label>Recipient</mat-label>
+
+        <mat-select formControlName="recipient">
+          <mat-option *ngFor="let recipient of allrecipients" [value]="recipient.id">
+            {{recipient.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+
+    </form>
+  </div>
+
+  <div style="margin-bottom:20px;margin-left: 20px;text-align: center;">
+    <button mat-raised-button color="primary" (click)="add()">Add</button>
+  </div>
+</div>

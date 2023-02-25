@@ -1,27 +1,39 @@
 ﻿using ALTEA_Server.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ALTEA_Server.Controllers
-{   
-/// <summary>
-/// 
-/// </summary>
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    /// 
+    public class LoginDetails
+    {
+        public String username {get;set;}  
+        public String password {get;set;}
+    }
+
+
     [ApiController]
+    [EnableCors("OpenCORSPolicy")]
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
+
+        
 
         public UserController(IUserService userService)
         {
             _userService = userService;
         }
 
-        //[HttpPost("Authenticate")]
-        //public  Task<bool> Authenticate(Object obj)
-        //{
-        //    return _userService.authenticate(obj);
-        //}
+        [HttpPost("Authenticate")]
+        public Task<bool> Authenticate(LoginDetails loginDetals)
+        {
+            return _userService.authenticate(loginDetals.username, loginDetals.password);
+        }
 
         /// <summary>
         /// 
@@ -59,10 +71,20 @@ namespace ALTEA_Server.Controllers
         /// 
         /// </summary>
         /// <returns></returns>
-        [HttpGet("GetAllPrincipals")]
-        public async Task<ActionResult<List<User>>> GetAllPrincipals()
+        [HttpGet("GetAllRecipientLeaders")]
+        public async Task<ActionResult<List<User>>> GetAllRecipientLeaders()
         {
-            return Ok(await _userService.GetAllPrincipals());
+            return Ok(await _userService.GetAllRecipientLeaders());
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("GetAllDonors")]
+        public async Task<ActionResult<List<Donor>>> GetAllDonors()
+        {
+            return Ok(await _userService.GetAllDonors());
         }
 
         /// <summary>
@@ -77,15 +99,26 @@ namespace ALTEA_Server.Controllers
 
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="users"></param>
-        /// <returns></returns>
-        [HttpPost("SaveAll")]
-        public Task<bool> Save(List<User> users)
+        [HttpPost("SaveDonor")]
+        public Task<bool> SaveDonor(Donor donor)
         {
-            return _userService.SaveUsers(users);
+            return _userService.SaveDonor(donor);
+
+        }
+
+        [HttpPost("SaveAdmin")]
+        public Task<bool> SaveAdmin(Admin admin)
+        {
+            return _userService.SaveAdmin(admin);
+            //return Task.FromResult(true);
+
+        }
+
+        [HttpPost("SaveRecipientLeader")]
+        public Task<bool> SaveRecipientLeader(RecipientLeader recipientLeader)
+        {
+            return _userService.SaveRecipientLeader(recipientLeader);
+            //return Task.FromResult(true);
 
         }
 

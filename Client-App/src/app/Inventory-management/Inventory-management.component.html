@@ -28,21 +28,23 @@
 
   <mat-menu  #menu="matMenu">
     <button class="menu-item" mat-menu-item [matMenuTriggerFor]="users">Users</button>
-    <button class="menu-item" mat-menu-item [matMenuTriggerFor]="schools">Schools</button>
-    <button class="menu-item" mat-menu-item [matMenuTriggerFor]="devices">Devices</button>
-
+    <button class="menu-item" mat-menu-item [matMenuTriggerFor]="recipients">Recipients</button>
+    <button class="menu-item" mat-menu-item [matMenuTriggerFor]="gallery">Gallery</button>
+    <button class="menu-item" mat-menu-item [matMenuTriggerFor]="donations">Donations</button>
+    <button class="menu-item" mat-menu-item [matMenuTriggerFor]="report">Reports</button>
+    <button class="menu-item" mat-menu-item [matMenuTriggerFor]="deviceInfo">Device Info</button>
   </mat-menu>
 
   <mat-menu class="menu-class" #users="matMenu">
-    <button mat-menu-item (click)="addUser()">Add a User/Users</button>
-    <button mat-menu-item (click)="removeUser()">Remove a User/Users</button>
-    <button mat-menu-item (click)="updateUser()">Update a User/Users</button>
+    <button mat-menu-item (click)="addUser()">Add a User</button>
+    <button mat-menu-item (click)="removeUser()">Remove a User</button>
+    <button mat-menu-item (click)="updateUser()">Update a User</button>
   </mat-menu>
 
-  <mat-menu class="menu-class" #schools="matMenu">
-    <button mat-menu-item (click)="addSchool()">Add a School/Schools</button>
-    <button mat-menu-item (click)="removeSchool()">Remove a School/Schools</button>
-    <button mat-menu-item (click)="updateSchool()">Update a School/Schools</button>
+  <mat-menu class="menu-class" #recipients="matMenu">
+    <button mat-menu-item (click)="addrecipient()">Add a Recipient</button>
+    <button mat-menu-item (click)="removerecipient()">Remove a recipient</button>
+    <button mat-menu-item (click)="updaterecipient()">Update a recipient</button>
   </mat-menu>
 
   <mat-menu class="menu-class" #devices="matMenu">
@@ -51,12 +53,31 @@
     <button mat-menu-item (click)="updateDevice()">Update a Device/Devices</button>
   </mat-menu>
 
+  <mat-menu class="menu-class" #gallery="matMenu">
+    <button mat-menu-item (click)="addPhoto()">Add a Photo/Photos</button>
+    <button mat-menu-item (click)="removePhoto()">Remove a Photo/Photos</button>
+  </mat-menu>
+
+  <mat-menu class="menu-class" #donations="matMenu">
+    <button mat-menu-item (click)="addDonation()">Add a Donation</button>
+    <button mat-menu-item (click)="removeDonation()">Remove a Donation</button>
+  </mat-menu>
+
+  <mat-menu class="menu-class" #report="matMenu">
+    <button mat-menu-item (click)="addReport()">Add a Report</button>
+    <button mat-menu-item (click)="removeReport()">Remove a Report</button>
+  </mat-menu>
+
+  <mat-menu class="menu-class" #deviceInfo="matMenu">
+    <button mat-menu-item (click)="addDeviceInfo()">Add Device Info</button>
+    <button mat-menu-item (click)="removeDeviceInfo()">Remove Device Info</button>
+  </mat-menu>
+
   <mat-menu  class="menu-class" #account="matMenu">
     <label mat-menu-item>{{userAccountService.user.userName}}</label>
     <button mat-menu-item>Change Password</button>
     <button mat-menu-item>Log Out</button>
   </mat-menu>
-
 
 </div>
 

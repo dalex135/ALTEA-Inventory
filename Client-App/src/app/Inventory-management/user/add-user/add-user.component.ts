@@ -14,9 +14,13 @@ import { Router } from '@angular/router';
 })
 export class AddUserComponent{
 
+  selectedImage: any;
   userForm: FormGroup;
   showPassword: boolean = false;
-  userTypes =  ['Admin', 'Principal', 'Sponsor']
+  userTypesEnum =  ['Admin', 'RecipientLeader', 'Donor'];
+  userTypesStrings =  ['Admin', 'RecipientLeader', 'Donor'];
+  donorTypes =  ['Internet', 'Device', 'Financial'];
+  recipientLeaderTypes =  ['Principal', 'ChiefOfficer', 'Priest', ];
 
   constructor(private formBuilder: FormBuilder,
               private snackBar: MatSnackBar,
@@ -24,28 +28,34 @@ export class AddUserComponent{
               private router: Router) {
 
     this.userForm = this.formBuilder.group({
+      file: ['', Validators.nullValidator],
       name: ['', Validators.nullValidator],
       userName: ['', Validators.nullValidator],
       password: ['', Validators.nullValidator],
       phoneNumber: ['', Validators.nullValidator],
       email: ['', Validators.nullValidator],
       userType: ['', Validators.nullValidator],
+      donorType: ['', Validators.nullValidator],
+      recipientLeaderType: ['', Validators.nullValidator],
     });
   }
 
   add(){
 
     var user = {
+      fileString: this.selectedImage,
       name: this.userForm.controls['name'].value,
       userName: this.userForm.controls['userName'].value,
       password: this.userForm.controls['password'].value,
       phoneNumber: this.userForm.controls['phoneNumber'].value,
       email: this.userForm.controls['email'].value,
       userType: this.userForm.controls['userType'].value,
+      recipientLeaderType: this.userForm.controls['recipientLeaderType'].value,
     }
-
-    this.restService.saveUser(user).subscribe(result =>
+    if (this.userForm.controls['userType'].value=='Donor')
+    this.restService.saveDonor(user).subscribe(result =>
       {
+
         if (result){
           this.snackBar.open('The user was uploaded!', 'Ok', {
             duration: 2000
@@ -59,16 +69,70 @@ export class AddUserComponent{
         }
       }
     );
+    else if(this.userForm.controls['userType'].value=='RecipientLeader'){
+      this.restService.saveRecipientLeader(user).subscribe(result =>
+        {
+          if (result){
+            this.snackBar.open('The user was uploaded!', 'Ok', {
+              duration: 2000
+            });
+            this.initializeForm()
+          }
+          else{
+            this.snackBar.open('The user was not uploaded!', 'Ok', {
+              duration: 2000
+            });
+          }
+        }
+      );
+    }else{
+      this.restService.saveAdmin(user).subscribe(result =>
+        {
+          if (result){
+            this.snackBar.open('The user was uploaded!', 'Ok', {
+              duration: 2000
+            });
+            this.initializeForm()
+          }
+          else{
+            this.snackBar.open('The user was not uploaded!', 'Ok', {
+              duration: 2000
+            });
+          }
+        }
+      );
+    }
+
+      //   console.log(JSON.stringify(user));
+      //     this.restService.saveUser(user).subscribe(result =>
+      //   {
+      //     if (result){
+      //       this.snackBar.open('The user was uploaded!', 'Ok', {
+      //         duration: 2000
+      //       });
+      //       this.initializeForm()
+      //     }
+      //     else{
+      //       this.snackBar.open('The user was not uploaded!', 'Ok', {
+      //         duration: 2000
+      //       });
+      //     }
+      //   }
+      // );
   }
 
   initializeForm(){
+    this.selectedImage = null;
     this.userForm = this.formBuilder.group({
+      file: ['', Validators.nullValidator],
       name: ['', Validators.nullValidator],
       userName: ['', Validators.nullValidator],
       password: ['', Validators.nullValidator],
       phoneNumber: ['', Validators.nullValidator],
       email: ['', Validators.nullValidator],
       userType: ['', Validators.nullValidator],
+      donorType: ['', Validators.nullValidator],
+      recipientLeaderType: ['', Validators.nullValidator],
     });
   }
 
@@ -78,6 +142,15 @@ export class AddUserComponent{
 
   togglePasswordVisibility(){
     this.showPassword = !this.showPassword;
+  }
+
+  onFileSelected(event:any){
+    var reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+
+    reader.onload = (_event) => {
+			this.selectedImage = reader.result;
+		}
   }
 
 }

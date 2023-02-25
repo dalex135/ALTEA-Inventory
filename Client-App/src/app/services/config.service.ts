@@ -5,7 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class ConfigService {
 
-  readonly ROOT_URL = 'http://localhost:5218';
+  // readonly ROOT_URL = '/api';
+  readonly ROOT_URL = 'https://localhost:7042';
 
   constructor() { }
 
@@ -23,15 +24,16 @@ export class ConfigService {
           'content-type': 'application/json'}
   }
 
-  getNullSchool(){
+  getNullrecipient(){
     return {
       id: 0,
       name: '',
       phoneNumber: '',
       email: '',
       address:'',
-      principalForeignKey:0,
-      principal: this.getNullUser()
+      recipientLeaderForeignKey:0,
+      recipientLeader: this.getNullUser(),
+      recipientType: 'School'
     }
   }
 

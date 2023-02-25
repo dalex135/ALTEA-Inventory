@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Device } from 'src/app/models/device';
-import { School } from 'src/app/models/school';
+import { Recipient } from 'src/app/models/recipient';
 import { User } from 'src/app/models/user';
 import { ConfigService } from 'src/app/services/config.service';
 import { RestService } from 'src/app/services/rest.service';
@@ -15,12 +15,14 @@ import { UserAccountService } from 'src/app/services/userAccount.service';
 })
 export class InventoryTableComponent  {
 
-  displayedColumnsDevices: string[] = ['id', 'description', 'type', 'brand', 'quantity', 'serialNumber', 'school'];
-  displayedColumnsSchools: string[] = ['id', 'name', 'principal', 'email', 'phoneNumber', 'address'];
+  displayedColumnsDonations: string[] = ['id', 'description', 'isAlreadyDonated', 'year', 'donor', 'recipient', 'contribution', 'deviceBrand', 'deviceType'];
+  displayedColumnsrecipients: string[] = ['id', 'name', 'recipientLeader', 'email', 'phoneNumber', 'address'];
   displayedColumnsUsers: string[] = ['id', 'name', 'userName', 'phoneNumber', 'email', 'userType'];
 
-  datasourceDevices: any;
-  datasourceSchools: any;
+  userTypes: string[] = ['Admin', 'Recipient Leader', 'Donor']
+
+  datasourceDonations: any;
+  datasourcerecipients: any;
   datasourceUsers: any;
 
   constructor(
@@ -30,42 +32,52 @@ export class InventoryTableComponent  {
       restService.getAllUsers().subscribe(
         users=>{
           this.datasourceUsers= users;
-          //////////////////////////////////////////////SCHOOL-RESTSEVICE-START
-          restService.getAllSchools().subscribe(
-            schools=>{
-              schools.forEach(school=>{
-                  if (school.principalForeignKey==null){
-                    school.principal = this.getNullPrincipal();
+          //////////////////////////////////////////////recipient-RESTSEVICE-START
+          restService.getAllRecipients().subscribe(
+            recipients=>{
+              recipients.forEach(recipient=>{
+                  if (recipient.recipientLeaderForeignKey==null){
+                    recipient.recipientLeader = this.getNullrecipientLeader();
                   }else{
-                    users.forEach(u=>{
-                      if(u.id==school.principalForeignKey)
-                        school.principal = u;
+                    users.forEach(user=>{
+                      if(user.id==recipient.recipientLeaderForeignKey)
+                        recipient.recipientLeader = user;
                     });
                   }
                 }
                 )
-              this.datasourceSchools = schools;
+              this.datasourcerecipients = recipients;
               ///////////////////////////////////////////DEVICE-RESTSERVICE-START
-              restService.getAllDevices().subscribe(
-                devices=>{
-                  devices.forEach(device=>{
-                    if (device.schoolForeignKey==null){
-                      device.school = this.getNullSchool();
-                    }else{
-                      schools.forEach(s=>{
-                        if(s.id==device.schoolForeignKey)
-                        device.school = s;
-                      })
-                    }
+              restService.getAllDonations().subscribe(donations=>{
+
+
+                donations.forEach((donation:any)=>{
+                  if (donation.recipientForeignKey==null){
+                    donation.recipient = this.getNullrecipient();
+                  }else{
+                    recipients.forEach(recipient=>{
+                      if(recipient.id==donation.recipientForeignKey)
+                      donation.recipient = recipient;
+                    });
                   }
-                  )
-                  this.datasourceDevices = devices;
+
+                  if (donation.donorForeignKey==null){
+                    donation.donor = this.getNullrecipient();
+                  }else{
+                    users.forEach(user=>{
+                      if(user.id==donation.donorForeignKey)
+                      donation.donor = user;
+                    });
+                  }
+
                 }
                 )
+                this.datasourceDonations = donations;
+              })
                 //////////////////////////////////////DEVICE-RESTSERVICE-END
             }
             )
-            //////////////////////////////////////////SCHOOL-RESTSEVICE-END
+            //////////////////////////////////////////recipient-RESTSEVICE-END
         }
       )
       ////////////////////////////////////////////////USER-RESTSEVICE-END
@@ -73,19 +85,20 @@ export class InventoryTableComponent  {
 
   }
 
-  getNullSchool(){
+  getNullrecipient(){
     return {
       id: 0,
       name: '',
       phoneNumber: '',
       email: '',
       address:'',
-      principalForeignKey:0,
-      principal: this.getNullPrincipal()
+      recipientLeaderForeignKey:0,
+      recipientLeader: this.getNullrecipientLeader(),
+      recipientType: ''
     }
   }
 
-  getNullPrincipal(){
+  getNullrecipientLeader(){
     return {
       id: 0,
       name: '',

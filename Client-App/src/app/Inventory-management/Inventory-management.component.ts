@@ -15,9 +15,10 @@ export class InventoryManagementComponent {
 
   constructor(private router:Router,
             userAccountService: UserAccountService,) {
-
-              this.userAccountService = userAccountService
-
+              this.userAccountService = userAccountService;
+              if (this.userAccountService.isAccessAuthenticated==false){
+                this.router.navigate(['login']);
+              }
   }
   addUser(){
     this.router.navigate(['add-user']);
@@ -28,14 +29,14 @@ export class InventoryManagementComponent {
   updateUser(){
     this.router.navigate(['update-user']);
   }
-  addSchool(){
-    this.router.navigate(['add-school']);
+  addrecipient(){
+    this.router.navigate(['add-recipient']);
   }
-  removeSchool(){
-    this.router.navigate(['remove-school']);
+  removerecipient(){
+    this.router.navigate(['remove-recipient']);
   }
-  updateSchool(){
-    this.router.navigate(['update-school']);
+  updaterecipient(){
+    this.router.navigate(['update-recipient']);
   }
 
   addDevice(){
@@ -46,6 +47,42 @@ export class InventoryManagementComponent {
   }
   updateDevice(){
     this.router.navigate(['update-device']);
+  }
+
+  addPhoto(){
+    this.router.navigate(['add-photo']);
+  }
+  removePhoto(){
+    this.router.navigate(['remove-photo']);
+  }
+  updatePhoto(){
+    this.router.navigate(['update-device']);
+  }
+
+  addDonation(){
+    this.router.navigate(['add-donation']);
+  }
+  removeDonation(){
+    this.router.navigate(['remove-donation']);
+  }
+  // updateDonation(){
+  //   this.router.navigate(['update-device']);
+  // }
+
+  addReport(){
+    this.router.navigate(['add-report']);
+  }
+  removeReport(){
+    this.router.navigate(['remove-report']);
+  }
+  updateReport(){
+    this.router.navigate(['update-device']);
+  }
+  addDeviceInfo(){
+    this.router.navigate(['add-device-info']);
+  }
+  removeDeviceInfo(){
+    this.router.navigate(['remove-device-info']);
   }
 
 }

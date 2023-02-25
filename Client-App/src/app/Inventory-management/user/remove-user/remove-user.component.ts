@@ -13,20 +13,32 @@ export class RemoveUserComponent {
 
   removeID:number
   showPassword: boolean = false;
+  userTypes: string[] = ['Admin', 'Recipient Leader', 'Donor']
 
-  user:User = {
+  user:any = {
     id: 0,
     name: '',
     userName: '',
     password: '',
     phoneNumber: '',
     email: '',
-    userType:''};
+    userType:1};
 
   constructor(private restService:RestService,
     private snackBar: MatSnackBar,
     private router:Router) {
     this.removeID = 0;
+  }
+
+  initializeForm(){
+    this.user = {
+      id: 0,
+      name: '',
+      userName: '',
+      password: '',
+      phoneNumber: '',
+      email: '',
+      userType:1};
   }
 
   remove(){
@@ -37,6 +49,7 @@ export class RemoveUserComponent {
         this.snackBar.open('User deleted!', 'Ok', {
           duration: 2000
         });
+        this.initializeForm();
       }else{
         this.snackBar.open('Error occured while deleting the user!', 'Ok', {
           duration: 2000
@@ -59,7 +72,6 @@ export class RemoveUserComponent {
           this.user = u;
         }
       }
-
     );
   }
 

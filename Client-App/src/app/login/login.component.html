@@ -1,19 +1,19 @@
 <div class="center" >
     <h1 style="margin-top: 20px;margin-bottom:20px;">ALTEA - Asset Management</h1>
-      <form name="form">
+      <form [formGroup]="form">
         <div>
             <mat-form-field appearance="outline">
                 <mat-label>Username</mat-label>
                 <input name="username"
-                [(ngModel)]="form.username"
+                formControlName="username"
                 matInput >
             </mat-form-field>
         </div>
         <div>
             <mat-form-field appearance="outline">
                 <mat-label>Password</mat-label>
-                <input name="username"
-                [(ngModel)]="form.password"
+                <input name="password"
+                formControlName="password"
                 type="password" matInput  >
             </mat-form-field>
         </div>

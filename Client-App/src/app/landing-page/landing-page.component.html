@@ -1,0 +1,123 @@
+
+
+<nav class="navbar navbar-expand-lg bg-white fixed-top" style="height: 70px;" id="mainNav">
+
+        <div class="container">
+        <div>
+          <a href="#" ><img src="assets/img/logo-no-background.png" alt="ALTEA" width="200px"></a>
+        </div>
+
+        <span style="display:inline-block; width: 100%"></span>
+
+        <!-- <div>  <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div> -->
+
+      <div class="collapse navbar-collapse" id="navbar-menu">
+          <ul class="navbar-nav">
+
+              <li class="nav-item" (mouseleave)='out(drop)' style=" border-color: white;">
+                  <div ngbDropdown class="dropdown" #drop="ngbDropdown"  (mouseover)='over(drop)'  >
+                    <a class="nav-link" id="dropdownWhatWeDo" ngbDropdownToggle href="#whatwedo"
+                    style="color:black;font-size: 15px; font-family:sans-serif; border-color: white;">
+                      What we do
+                    </a>
+                    <div ngbDropdownMenu  aria-labelledby="dropdownWhatWeDo"
+                    class="dropdown dropdown-menu-right" (mouseleave)='out(drop)'>
+                        <a (click)="goToWWD('gallery')" class="dropdown-item">Image Gallery</a>
+                        <a (click)="goToWWD('stories')" class="dropdown-item">Stories of Impact</a>
+                        <a (click)="goToWWD('blogs')" class="dropdown-item">Blog/News</a>
+                        <a (click)="goToWWD('ITSuppport')" class="dropdown-item">IT Support</a>
+                        <a (click)="goToWWD('reports')" class="dropdown-item">Reports</a>
+                    </div>
+                  </div>
+              </li>
+              <li class="nav-item " (mouseleave)='out(drop1)'>
+                <div ngbDropdown class="dropdown" #drop1="ngbDropdown"  (mouseover)='over(drop1)'  >
+                  <a  class="nav-link" id="dropdownhowtodonate" ngbDropdownToggle href="#howtodonate"
+                  style="color:black;font-size: 15px; font-family:sans-serif;">
+                    How to Donate
+                  </a>
+                  <div ngbDropdownMenu  aria-labelledby="dropdownhowtodonate"
+                  class="dropdown dropdown-menu-right" (mouseleave)='out(drop1)'
+                  style="color:rgb(0, 0, 0);font-size: 15px; font-family:sans-serif;">
+                  <a class="dropdown-item">Donations</a>
+                    <a (click)="goToHD('inDonor')" class="dropdown-item">Be an Internet Donor</a>
+                    <a (click)="goToHD('hardware')" class="dropdown-item">Donate IT Harware</a>
+                    <a (click)="goToHD('finance')" class="dropdown-item">Support Financially</a>
+
+                  </div>
+                </div>
+            </li>
+
+            <li class="nav-item " (mouseleave)='out(drop2)'>
+              <div ngbDropdown class="dropdown" #drop2="ngbDropdown"  (mouseover)='over(drop2)'  >
+                <a (click)="goToRD('schools', 1)" class="nav-link" id="dropdownshooolsdonors" ngbDropdownToggle href="#shooolsdonors"
+                style="color:black;font-size: 15px; font-family:sans-serif;">
+                 recipients/Donors
+                </a>
+                <div ngbDropdownMenu  aria-labelledby="dropdownshooolsdonors"
+                class="dropdown dropdown-menu-right" (mouseleave)='out(drop2)'
+                style="color:black;font-size: 15px; font-family:sans-serif;">
+                <a (click)="goToRD('schools', 1)" class="dropdown-item">IT Equipment Donated Schools</a>
+                <a (click)="goToRD('schools', 2)" class="dropdown-item">IT Equipment Expecting Schools</a>
+                <a (click)="goToRD('schools', 3)" class="dropdown-item">Internet Donated schools</a>
+                <a (click)="goToRD('schools', 4)" class="dropdown-item">Internet Expecting Schools</a>
+                <a (click)="goToRD('donors', 0)" class="dropdown-item">Internet Donors</a>
+                </div>
+              </div>
+          </li>
+
+          <li class="nav-item" (mouseleave)='out(drop3)'>
+            <div ngbDropdown class="dropdown" #drop3="ngbDropdown"  (mouseover)='over(drop3)'  >
+              <a class="nav-link" id="dropdownrecipientsdonors" ngbDropdownToggle href="#aboutus"
+              style="color:black;font-size: 15px; font-family:sans-serif;">
+                About Us
+              </a>
+              <div ngbDropdownMenu  aria-labelledby="dropdownrecipientsdonors"
+              class="dropdown dropdown-menu-right" (mouseleave)='out(drop3)'>
+                  <a class="dropdown-item">Our Mission/Vision</a>
+                  <a class="dropdown-item">Our Story</a>
+                  <a class="dropdown-item">Our Supporters</a>
+                  <a class="dropdown-item">Contact Us</a>
+              </div>
+            </div>
+        </li>
+
+        <li class="nav-item" (mouseleave)='out(drop3)'>
+          <div>
+            <a class="nav-link" href="login"
+            style="color:black;font-size: 15px; font-family:sans-serif;">
+              Login
+            </a>
+
+          </div>
+      </li>
+
+
+        </ul>
+      </div>
+
+
+  </div>
+</nav>
+
+<app-main-header id="#"></app-main-header>
+
+<app-what-we-do id="whatwedo"></app-what-we-do>
+
+<app-how-to-donate id="howtodonate"></app-how-to-donate>
+
+
+<app-recipients-donors id="recipientsdonors"></app-recipients-donors>
+
+<app-about-us id="about-us"></app-about-us>
+
+
+
+
+
+

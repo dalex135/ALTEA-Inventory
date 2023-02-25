@@ -1,4 +1,4 @@
-import { School } from "./school";
+import { Recipient } from "./recipient";
 
 export interface Device{
 
@@ -8,6 +8,6 @@ export interface Device{
   type: string;
   brand: string;
   quantity: string;
-  school: School;
-  schoolForeignKey: number;
+  recipient: Recipient;
+  recipientForeignKey: number;
 }

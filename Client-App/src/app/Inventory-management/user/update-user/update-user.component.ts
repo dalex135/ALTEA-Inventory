@@ -15,7 +15,7 @@ import { RestService } from 'src/app/services/rest.service';
 })
 export class UpdateUserComponent {
 
-  userTypes =  ['Admin', 'Principal', 'Sponsor']
+  userTypes =  ['Admin', 'recipientLeader', 'Sponsor']
   updateID:number
   user:User = {
     id: 0,

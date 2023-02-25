@@ -1,0 +1,19 @@
+heading_{
+  font-size: 40px;
+  font-weight: 500;
+  text-align:center;
+}
+
+.container {
+  background: none;
+  overflow: none;
+  display: block;
+  z-index: 1;
+  }
+
+
+  @media (min-width: 200px) {
+    .container{
+        max-width: 1800px;
+    }
+}

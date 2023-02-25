@@ -1,0 +1,22 @@
+
+  @media (min-width: 2400px) {
+    .container{
+        max-width: 1800px;
+    }
+}
+
+.nav-link{
+  color:black;font-size: 15px; font-family:sans-serif;
+}
+
+
+.container {
+ 
+  }
+
+
+  @media (min-width: 200px) {
+    .container{
+        max-width: 1800px;
+    }
+}

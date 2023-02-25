@@ -39,7 +39,7 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
-        <input [readonly]="true" matInput [type]="showPassword ? 'text' : 'password'" formControlName="password">
+        <input [readonly]="true" matInput [type]="showPassword ? 'text' : 'password'" [(ngModel)]="user.password" >
         <mat-icon matSuffix (click)="togglePasswordVisibility()">visibility</mat-icon>
       </mat-form-field>
 
@@ -62,7 +62,7 @@
 
       <mat-form-field appearance="outline">
         <mat-label>User Type</mat-label>
-        <input [readonly]="true" matInput [(ngModel)]="user.userType">
+        <input [readonly]="true" matInput [(ngModel)]="userTypes[user.userType-1]">
       </mat-form-field>
 
       <span style="display:inline-block; width: 20px;"></span>

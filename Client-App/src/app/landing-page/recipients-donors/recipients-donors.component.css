@@ -1,0 +1,27 @@
+agm-map{
+  height: 800px;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
+
+
+.container {
+  background: none;
+  overflow: none;
+  display: block;
+  z-index: 1;
+  }
+
+
+  @media (min-width: 200px) {
+    .container{
+        max-width: 1800px;
+    }
+}
