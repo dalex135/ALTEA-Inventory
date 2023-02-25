@@ -6,9 +6,25 @@ namespace ALTEA_Server.Models
     public enum UserType
     {
         Admin = 1,
-        Principal = 2,
-        Sponsor = 3
+        RecipientLeader = 2,
+        Donor = 3
     }
 
+    [JsonConverter(typeof(JsonStringEnumConverter))]
 
+    public enum RecipientLeaderType
+    {
+        Principal = 1,
+        Priest = 2,
+        ChiefOfficer = 3
+    }
+
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+    public enum DonorType
+    {
+        Internet = 1,
+        Device = 2,
+        Financial = 3
+
+    }
 }

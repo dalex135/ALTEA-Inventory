@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg bg-white fixed-top" style="height: 70px;" id="mainNav">
+  <div class="container px-4 px-lg-5">
+    <div>
+      <a href="#" ><img src="assets/img/logo-no-background.png" alt="ALTEA" width="200px"></a>
+    </div>
+  </div>
+</nav>
+
+<div class="container px-4 px-lg-5" style="padding: 10%;">
+  <div class="row gx-4 gx-lg-5">
+
+      <div *ngFor="let donation of donorwiseDonations" class="col-md-4 mb-3 mb-md-0">
+
+          <div class="card" >
+              <div class="card-body text-center">
+                  <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+                  <div><img [src]="donation.image" width="200" height="200"></div>
+
+                  <span style="display:inline-block; height: 30px;"></span>
+
+                  <h4 class="text-uppercase m-0" style="height: 20px;font-family: Okojo ;font-size: 25px;font-weight: 200; text-align:center;line-height: 1.2;">{{donation.name}}</h4>
+                  <hr class="my-4 mx-auto" />
+                  <div class="medium text-black-50" style="font-family: Okojo ;font-size: 20px;font-weight: 200; text-align:center;line-height: 1.2;" *ngIf="donation.internet">Supported with Internet Connection to {{donation.internetSchool}} school</div>
+
+                  <div class="medium text-black-50" style="font-family: Okojo ;font-size: 20px;font-weight: 200; text-align:center;line-height: 1.2;" *ngIf="donation.financial">Supported Financially</div>
+              </div>
+          </div>
+      </div>
+
+
+  </div>
+</div>

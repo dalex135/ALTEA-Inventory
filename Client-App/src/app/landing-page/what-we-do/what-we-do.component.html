@@ -1,0 +1,272 @@
+
+<section class=" text-center" id="what-we-do-head">
+  <span style="display:inline-block; height: 100px;"></span>
+        <div class="container">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-20">
+                    <h2 class="text-black mb-4 text-uppercase" style="font-family: 'Open Sans' ;font-size: 50px;line-height: 1;font-weight: 800;">Aus-Lanka Technological and Educational AID</h2>
+                    <span style="display:inline-block; height: 300px;"></span>
+                    <h2 class="text-black-75" style="font-family: 'Open Sans' ;font-size: 30px;font-weight: 50; line-height: 1.2; text-align: justify;">
+                      The purpose of this initiative is to provide educational support to poor children from underprivileged recipients by donating IT Equipment’s to their recipients.
+                      The program will aim to enhance their learning by providing access to educational resources through technology.
+                      The program will be implemented through partnerships with local recipients and ALTEA Association.
+                      The impact of the initiative will be measured by tracking the academic progress and success of educational standard of students.
+                    </h2>
+                </div>
+                <span style="display:inline-block; height: 500px;"></span>
+            </div>
+        </div>
+  </section>
+
+<!-- <section>  <div class="container px-8 px-lg-5" id="gallery">
+  <div class="row gx-8 gx-lg-10 justify-content-center">
+    <span style="display:inline-block; height: 50px;"></span>
+      <div style="width: 10000px; height: 300px; text-align:center;margin:0; padding:0;">
+        <h1 class="text-black mb-4" style="font-size: 40px;font-weight: 500;">Gallery</h1>
+        <ng-image-slider #nav
+          [images]="imageObject"
+          [infinite]="false"
+          [autoSlide]="1"
+          [imageSize]="{width: '22%', height: 500}"
+          slideImage="1">
+        </ng-image-slider>
+      </div>
+</div>
+</div>
+</section> -->
+
+<section>
+
+  <div class="container" id="gallery">
+      <span style="display:inline-block; height: 50px;"></span>
+      <h1 class="text-black mb-4" style="font-family: 'Open Sans' ;font-size: 50px;font-weight: 800; text-align:center">GALLERY</h1>
+      <span style="display:inline-block; height: 30px;"></span>
+
+<gallery style="height: 1000px;" id="mixedExample" [thumbTemplate]="thumbTemplate" [itemTemplate]="itemTemplate"></gallery>
+
+<!-- Add custom template to thumbnails -->
+<ng-template #thumbTemplate let-type="type">
+
+</ng-template>
+
+<!-- Add custom template to image items -->
+<ng-template #itemTemplate
+             let-index="index"
+             let-type="type"
+             let-data="data"
+             let-currIndex="currIndex"
+             let-isActive="isActive"
+             >
+  <span *ngIf="type === 'image' && isActive" [@slideAnimation] class="item-text">
+    {{data?.title}}
+  </span>
+</ng-template>  </div>
+
+</section>
+
+
+
+
+
+<span style="display:inline-block; height: 50px;"></span>
+
+
+
+<section class="py-5" id="stories">
+
+
+  <div class="container px-4 px-lg-5 mt-5">
+
+    <h3 class="text-black mb-8" style="font-family: 'Open Sans' ;font-size: 50px;font-weight: 800; text-align:center; line-height: 1.2;">STORIES OF IMPACT</h3>
+    <span style="display:inline-block; height: 50px;"></span>
+
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5">
+          <div *ngFor="let story of storiesOfImpact; let i = index" class="col-md-4 mb-3 mb-md-0">
+              <div class="py-4 h-100">
+                  <div  class="card-body text-center">
+                      <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+                      <h4 class="text-uppercase text-black-100" style="font-family: 'Open Sans' ;height:30px;font-size: 22px;line-height: 1.2; color: black;; text-align: left;">{{story.recipient.name}}</h4>
+                      <span style="display:inline-block; height: 20px;"></span>
+
+                      <div  class="col-lg-12"><img class="img-fluid" [src]=story.fileString alt="..." /></div>
+
+                      <br>
+                      <div class="text-uppercase  large text-black-100" style="font-family: 'Open Sans' ;height:70px;font-size: 23px;line-height: 1.2;text-align:left; color: black;">{{story.topic}}</div>
+                      <hr class="my-4 mx-auto" />
+                      <br>
+                      <div class="large" style="font-family: 'Open Sans' ;font-size: 20px; line-height: 1.2;text-align:justify; color: #000;">{{story.description|limitTo: '500' }}</div>
+                      <span style="display:inline-block; height: 30px;"></span>
+
+
+                    </div>
+                    <button (click)="openReport(i, 'story')" type="button" class=" btn-outline-secondary btn-sm">Learn more</button>
+
+              </div>
+          </div>
+          <div style="text-align: center;">
+            <button (click)="openMore('story')" type="button" class="btn-outline-secondary btn-sm" style="width: 250px;">More on Stories of Impact</button>
+          </div>
+      </div>
+  </div>
+  </div>
+</section> -->
+
+
+<section class="py-5" id="blogs">
+
+  <div class="container px-4 px-lg-5 mt-5">
+
+    <h3 class="text-black mb-4" style="font-family: 'Open Sans' ;font-size: 50px;font-weight: 800; text-align:center;line-height: 1.2;">BLOGS & NEWS</h3>
+    <span style="display:inline-block; height: 50px;"></span>
+
+    <div ng-controller="LimitController" class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5">
+          <div *ngFor="let nOrB of newsOrBlogs; let i = index" class="col-md-4 mb-3 mb-md-0">
+              <div class="py-4 h-100">
+                  <div class="card-body text-center">
+                      <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+                      <h4 class="text-uppercase  text-black-100" style="font-family: 'Open Sans' ;height:30px;font-size: 22px;line-height: 1.2; color: black; text-align: left;">{{nOrB.recipient.name}}</h4>
+                      <span style="display:inline-block; height: 20px;"></span>
+
+                      <div  class="col-lg-12"><img class="img-fluid" [src]=nOrB.fileString alt="..." /></div>
+                      <hr class="my-4 mx-auto" />
+                      <div class=" text-uppercase large text-black-100" style="font-family: 'Open Sans' ;height:70px;font-size: 23px;line-height: 1.2;text-align:left; color: black;">{{nOrB.topic}}</div>
+
+                      <hr class="my-4 mx-auto" />
+                      <br>
+                      <div  class="large" style="font-family: 'Open Sans' ;font-size: 20px; line-height: 1.2;text-align:justify; color: #000;">{{nOrB.description|limitTo: '500' }}</div>
+                      <span style="display:inline-block; height: 30px;"></span>
+
+
+                    </div>
+                    <button (click)="openReport(i, 'blog')" type="button" class="btn-outline-secondary btn-sm">Learn more</button>
+
+              </div>
+          </div>
+          <div style="text-align: center;">
+            <button (click)="openMore('blog')" type="button" class="btn-outline-secondary btn-sm" style="width: 250px;">More on Blogs and News</button>
+          </div>
+
+
+      </div>
+  </div>
+  </div>
+</section>
+
+<section id="ITSuppport">
+  <div class="container">
+    <span style="display:inline-block; height: 50px;"></span>
+    <h3 class="text-black mb-4" style="font-family: 'Open Sans' ;font-size: 50px;font-weight: 800; text-align:center;line-height: 1.2;">IT SUPPORT</h3>
+
+    <span style="display:inline-block; height: 30px;"></span>
+    <div>
+      <img class="img-fluid" src='assets/img/ITSupport.jpg' alt="..." />
+    </div>
+    <span style="display:inline-block; height: 40px;"></span>
+
+    <div style="font-family: 'Open Sans' ;font-size: 25px;font-weight: 300; text-align:justify;line-height: 1.2;">
+        We have organized the service of Technical Officer who will visit Schools that have received donations and inspect the condition of IT Equipment’s. He will also provide technical assistance and support related to hardware and software.
+      The Technical Officer will help to resolve problems faced by Schools who have received donations and assist in the installation, configuration, and troubleshooting of various types of problems faced by the Schools.
+      The main goal of IT support is to ensure the smooth operation of donated Machines, maximize the availability of technology resources, and enhance the productivity of Scholl Children of rural Schools.
+    </div>
+
+  </div>
+
+
+  <span style="display:inline-block; height: 30px;"></span>
+
+</section>
+
+
+
+
+
+
+
+<section id="reports">
+  <div class="container" style="text-align: center;align-self: center;align-content: center;">
+    <span style="display:inline-block; height: 50px;"></span>
+    <h3 class="text-black mb-4"
+    style="font-family: 'Open Sans' ;font-size: 50px;font-weight: 800; text-align:center;line-height: 1.2;">
+    REPORTS
+    </h3>
+
+    <span style="display:inline-block; height: 30px;"></span>
+
+      <div (click)="openPDF('Project 21-22.pdf')" class="card py-4 h-150" style="width: 100%;;align-content: center;" >
+        <div class="card-body text-center">
+            <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+
+
+            <span style="display:inline-block; height: 30px;"></span>
+
+            <h4 class="text-uppercase m-0"
+            style="height: 20px;font-family: 'Open Sans' ;font-size: 25px;font-weight: 200; text-align:center;line-height: 1.2;">
+            Annual Report 2020-2021</h4>
+            <hr class="my-4 mx-auto" />
+            </div>
+    </div>
+
+
+
+    <div class="card py-4 h-150" style="width: 100%;" >
+      <div class="card-body text-center">
+          <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+
+
+          <span style="display:inline-block; height: 30px;"></span>
+
+          <h4 class="text-uppercase m-0"
+          style="height: 20px;font-family: Okojo ;font-size: 25px;font-weight: 200; text-align:center;line-height: 1.2;">
+          Annual Report 2019-2020</h4>
+          <hr class="my-4 mx-auto" />
+          </div>
+  </div>
+
+    <div class="card py-4 h-150" style="width: 100%;" >
+      <div class="card-body text-center">
+          <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+
+
+          <span style="display:inline-block; height: 30px;"></span>
+
+          <h4 class="text-uppercase m-0"
+          style="height: 20px;font-family: Okojo ;font-size: 25px;font-weight: 200; text-align:center;line-height: 1.2;">
+          Annual Report 2018-2019</h4>
+          <hr class="my-4 mx-auto" />
+          </div>
+  </div>
+
+    <div class="card py-4 h-150" style="width: 100%;" >
+      <div class="card-body text-center">
+          <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+
+
+          <span style="display:inline-block; height: 30px;"></span>
+
+          <h4 class="text-uppercase m-0"
+          style="height: 20px;font-family: Okojo ;font-size: 25px;font-weight: 200; text-align:center;line-height: 1.2;">
+          Annual Report 2017-2018</h4>
+          <hr class="my-4 mx-auto" />
+          </div>
+  </div>
+
+    <div class="card py-4 h-150" style="width: 100%;" >
+      <div class="card-body text-center">
+          <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+
+
+          <span style="display:inline-block; height: 30px;"></span>
+
+          <h4 class="text-uppercase m-0"
+          style="height: 20px;font-family: Okojo ;font-size: 25px;font-weight: 200; text-align:center;line-height: 1.2;">
+          Annual Report 2016-2017</h4>
+          <hr class="my-4 mx-auto" />
+          </div>
+    </div>
+    </div>
+  <span style="display:inline-block; height: 30px;"></span>
+
+</section>
+

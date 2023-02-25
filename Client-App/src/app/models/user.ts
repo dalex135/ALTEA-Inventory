@@ -7,3 +7,11 @@ export interface User{
     email: string;
     userType: string;
 }
+
+export interface Donor extends User{
+  donorType:String;
+}
+
+export interface RecipientLeader extends User{
+  donorType:String;
+}

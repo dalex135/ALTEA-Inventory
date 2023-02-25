@@ -1,0 +1,95 @@
+.slider {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+ }
+
+ .slider .slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 105%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  animation: slider 75s infinite;
+ }
+
+
+ .slider .slide:nth-child(1) {
+    background-image: url('src/assets/img/homepage-photo_1.png');
+    animation-delay: 0s;
+ }
+
+ .slider .slide:nth-child(2) {
+    background-image: url('src/assets/img/homepage-photo_2.png');
+    animation-delay: -25s;
+ }
+
+ .slider .slide:nth-child(3) {
+  background-image: url('src/assets/img/homepage-photo_1.png');
+  animation-delay: -50s;
+}
+
+@keyframes slider {
+  0%, 26%, 100% {
+    opacity: 1;
+    animation-timing-function: ease;
+    z-index: 0;
+  }
+  33% {
+    opacity: 0;
+    animation-timing-function: step-end;
+    z-index: 0;
+  }
+  93% {
+    opacity: 1;
+    animation-timing-function: step-end;
+    z-index: -1;
+  }
+}
+
+.pitch-1{
+  color:#7BCDE9;
+  font-size: 60px;
+  font-family:sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-left: 10%;
+  font-size: 150px;
+}
+
+.pitch-2{
+  color:#FEE042;
+  font-size: 60px;
+  font-family:sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-left: 10%;
+  font-size: 120px;
+}
+
+.pitch-3{
+  color:#4EDD6B;
+  font-size: 60px;
+  font-family:sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-left: 10%;
+  font-size: 120px;
+}
+
+.container {
+  background: none;
+  overflow: none;
+  display: block;
+  z-index: 1;
+  }
+
+
+  @media (min-width: 200px) {
+    .container{
+        max-width: 1800px;
+    }
+}

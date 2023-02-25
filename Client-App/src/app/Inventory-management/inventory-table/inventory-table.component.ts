@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Device } from 'src/app/models/device';
-import { School } from 'src/app/models/school';
+import { Recipient } from 'src/app/models/recipient';
 import { User } from 'src/app/models/user';
 import { ConfigService } from 'src/app/services/config.service';
 import { RestService } from 'src/app/services/rest.service';
@@ -15,65 +15,90 @@ import { UserAccountService } from 'src/app/services/userAccount.service';
 })
 export class InventoryTableComponent  {
 
-  displayedColumnsDevices: string[] = ['description', 'type', 'brand', 'quantity', 'serialNumber', 'school'];
-  displayedColumnsSchools: string[] = ['name', 'principal', 'email', 'phoneNumber', 'address'];
-  displayedColumnsUsers: string[] = ['name', 'userName', 'phoneNumber', 'email', 'userType'];
+  displayedColumnsDonations: string[] = ['id', 'description', 'isAlreadyDonated', 'year', 'donor', 'recipient', 'contribution', 'deviceBrand', 'deviceType'];
+  displayedColumnsrecipients: string[] = ['id', 'name', 'recipientLeader', 'email', 'phoneNumber', 'address'];
+  displayedColumnsUsers: string[] = ['id', 'name', 'userName', 'phoneNumber', 'email', 'userType'];
 
-  datasourceDevices: any;
-  datasourceSchools: any;
+  userTypes: string[] = ['Admin', 'Recipient Leader', 'Donor']
+
+  datasourceDonations: any;
+  datasourcerecipients: any;
   datasourceUsers: any;
 
   constructor(
     private restService: RestService) {
 
-      restService.getAllDevices().subscribe(
-      devices=>{
-
-        devices.forEach(device=>{
-          if (device.school==null){
-              device.school = this.getNullSchool();
-          }
-          }
-        )
-        this.datasourceDevices = devices;
-      }
-      )
-
-      restService.getAllSchools().subscribe(
-      schools=>{
-
-        schools.forEach(school=>{
-            if (school.principal==null){
-              school.principal = this.getNullPrincipal();
-            }else{
-              console.log(school.principal)
-            }
-          }
-          )
-
-        this.datasourceSchools = schools;
-      }
-      )
-
+      //////////////////////////////////////////////////USER-RESTSEVICE-START
       restService.getAllUsers().subscribe(
         users=>{
           this.datasourceUsers= users;
+          //////////////////////////////////////////////recipient-RESTSEVICE-START
+          restService.getAllRecipients().subscribe(
+            recipients=>{
+              recipients.forEach(recipient=>{
+                  if (recipient.recipientLeaderForeignKey==null){
+                    recipient.recipientLeader = this.getNullrecipientLeader();
+                  }else{
+                    users.forEach(user=>{
+                      if(user.id==recipient.recipientLeaderForeignKey)
+                        recipient.recipientLeader = user;
+                    });
+                  }
+                }
+                )
+              this.datasourcerecipients = recipients;
+              ///////////////////////////////////////////DEVICE-RESTSERVICE-START
+              restService.getAllDonations().subscribe(donations=>{
+
+
+                donations.forEach((donation:any)=>{
+                  if (donation.recipientForeignKey==null){
+                    donation.recipient = this.getNullrecipient();
+                  }else{
+                    recipients.forEach(recipient=>{
+                      if(recipient.id==donation.recipientForeignKey)
+                      donation.recipient = recipient;
+                    });
+                  }
+
+                  if (donation.donorForeignKey==null){
+                    donation.donor = this.getNullrecipient();
+                  }else{
+                    users.forEach(user=>{
+                      if(user.id==donation.donorForeignKey)
+                      donation.donor = user;
+                    });
+                  }
+
+                }
+                )
+                this.datasourceDonations = donations;
+              })
+                //////////////////////////////////////DEVICE-RESTSERVICE-END
+            }
+            )
+            //////////////////////////////////////////recipient-RESTSEVICE-END
         }
       )
+      ////////////////////////////////////////////////USER-RESTSEVICE-END
+
+
   }
 
-  getNullSchool(){
+  getNullrecipient(){
     return {
       id: 0,
       name: '',
       phoneNumber: '',
       email: '',
       address:'',
-      principal: this.getNullPrincipal()
+      recipientLeaderForeignKey:0,
+      recipientLeader: this.getNullrecipientLeader(),
+      recipientType: ''
     }
   }
 
-  getNullPrincipal(){
+  getNullrecipientLeader(){
     return {
       id: 0,
       name: '',

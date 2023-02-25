@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/18275a70-bcd2-4f75-a40e-1288bed88bc1/AppServices/subscriptions/18275a70-bcd2-4f75-a40e-1288bed88bc1/resourceGroups/resourceGroup/providers/Microsoft.Web/sites/altea-project",
+    "appService.deploySubpath": "dist"
+}

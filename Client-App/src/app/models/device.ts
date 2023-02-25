@@ -1,11 +1,13 @@
-import { School } from "./school";
+import { Recipient } from "./recipient";
 
 export interface Device{
+
   id: number;
   description: string;
   serialNumber: string;
   type: string;
   brand: string;
   quantity: string;
-  school: School;
+  recipient: Recipient;
+  recipientForeignKey: number;
 }

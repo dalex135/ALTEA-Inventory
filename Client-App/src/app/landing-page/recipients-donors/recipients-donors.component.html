@@ -1,0 +1,146 @@
+
+  <!-- <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
+    <div class="col-lg-6"><img class="img-fluid" src="assets/img/demo-image-01.jpg" alt="..." /></div>
+    <div class="col-lg-6">
+        <div class="bg-black text-center h-100 project">
+            <div class="d-flex h-100">
+
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+
+<section id="schools">
+  <span style="display:inline-block; height: 70px;"></span>
+
+
+    <h3 class="text-black-100" style="font-family: 'Open Sans' ;font-size: 50px;font-weight: 800; text-align:center;line-height: 1.2; color: black;">DONATION RECIPIENTS</h3>
+
+  <div class=" container  text-align-center">
+
+    <span style="display:inline-block; height: 50px;"></span>
+
+    
+
+    <br>
+
+    <div class="container" style="text-align: center;" >
+      <agm-map style="text-align: center; padding: 5%;" #gm [latitude]="7.8742" [longitude]="80.6511" [zoom]="8.0" [scrollwheel]="false" [gestureHandling]="'cooperative'">
+       <agm-marker *ngFor="let recipientAgmMarker of recipientAgmMarkers"
+       [latitude]=recipientAgmMarker.latitude
+       [longitude]=recipientAgmMarker.longitude
+       [iconUrl]="'./assets/img/school-icon.png'"
+       (mouseOver)="onMouseOver(infoWindow,gm)"
+       >
+         <agm-info-window [disableAutoPan]="false" #infoWindow>
+              <div style="font-family: Okojo ;font-size: 15px;font-weight: 200; text-align:left;line-height: 1.2;">
+                  {{recipientAgmMarker.recipientName}}
+              </div>
+          </agm-info-window>
+      </agm-marker>
+      </agm-map>
+    </div>
+
+    <div style="margin-left:10%; font-size: 20px" class="row gx-4 gx-lg-5">
+      <div  class=" col-md-6 mb-3 mb-md-0 featured-text text-left text-lg-left">
+
+        <label class="form-check-label">
+          <input style="font-family: Okojo ;font-size: 20px;font-weight: 200; text-align:left;line-height: 1.2;" [checked]="true" (change)="selectDevicesRecpients()" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" [(ngModel)]="selectedOption" value="option1" >
+          Devices Donated Schools
+          <span class="form-check-sign"></span>
+        </label>
+
+        <span style="display:inline-block; width: 85%;"></span>
+
+
+        <label class="form-check-label">
+          <input style="font-family: Okojo ;font-size: 20px;font-weight: 200; text-align:left;line-height: 1.2;" (change)="selectInternetRecpients()" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" [(ngModel)]="selectedOption" value="option2" checked="">
+          Internet Donated Schools
+          <span class="form-check-sign"></span>
+        </label>
+
+        <span style="display:inline-block; width: 85%;"></span>
+
+    </div>
+      <div class=" col-md-6 mb-3 mb-md-0 featured-text text-right text-lg-left">
+
+
+        <label class="form-check-label">
+          <input style="font-family: 'Open Sans' ;font-size: 20px;font-weight: 200; text-align:left;line-height: 1.2; color: black;" (change)="selectDevicesExpectingRecpients()" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" [(ngModel)]="selectedOption" value="option3" checked="">
+          Schools expecting Device Donations
+          <span class="form-check-sign"></span>
+        </label>
+
+        <span style="display:inline-block; width: 85%;"></span>
+
+
+        <label class="form-check-label">
+          <input style="font-family: 'Open Sans' ;font-size: 20px;font-weight: 200; text-align:left;line-height: 1.2; color:black" (change)="selectInternetExpectingRecpients()" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" [(ngModel)]="selectedOption" value="option4" checked="">
+          Schools expecting Internet Donations
+          <span class="form-check-sign"></span>
+        </label>
+
+        <span style="display:inline-block; width: 85%;"></span>
+
+      </div>
+
+    </div>
+
+
+
+  </div>
+</section>
+
+<span style="display:inline-block; height: -100px;"></span>
+
+<section id="donors">
+  <span style="display:inline-block; height: 150px;"></span>
+
+  <h1  style="font-family: 'Open Sans' ;font-size: 50px;font-weight: 800; text-align:center; color: black;">DONATIONS</h1>
+
+  <span style="display:inline-block; height: 50px;"></span>
+
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5">
+
+            <div *ngFor="let donation of donorwiseDonations" class="col-md-4 mb-3 mb-md-0">
+
+                <div class="card" >
+                    <div class="card-body text-center">
+                        <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+                        <div><img [src]="donation.image" width="200" height="200"></div>
+
+                        <span style="display:inline-block; height: 30px;"></span>
+
+                        <h4 class="text-uppercase m-0" style="height: 20px;font-family: Okojo ;font-size: 25px;font-weight: 200; text-align:center;line-height: 1.2;">{{donation.name}}</h4>
+                        <hr class="my-4 mx-auto" />
+                        <div class="medium text-black-50" style="font-family: Okojo ;font-size: 20px;font-weight: 200; text-align:center;line-height: 1.2;" *ngIf="donation.internet">Supported with Internet Connection to {{donation.internetSchool}} school</div>
+
+                        <div class="medium text-black-50" style="font-family: Okojo ;font-size: 20px;font-weight: 200; text-align:center;line-height: 1.2;" *ngIf="donation.financial">Supported Financially</div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center;">
+              <button (click)="openMore()" type="button" class="btn-outline-secondary btn-sm" style="width: 150px;">More on Donors</button>
+            </div>
+
+        </div>
+    </div>
+    
+    <span style="display:inline-block; height:200px;"></span>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+

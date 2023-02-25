@@ -1,0 +1,115 @@
+<div class="center" style="border: 0.01px solid rgb(192, 192, 192);">
+  <div style="margin-top:20px; margin-left: 20px;;text-align: center;">
+    <span style="display:inline-block; width: 20px;"></span>
+
+
+      <div style="margin-bottom:20px;margin-left: 20px;text-align: left;">
+        <button mat-raised-button  (click)="goHome()">Home</button>
+      </div>
+
+
+      <h2>Remove a Donation</h2>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Enter the User ID remove</mat-label>
+        <input matInput [(ngModel)]="removeID">
+      </mat-form-field>
+
+      <span style="display:inline-block; height: 60px;"></span>
+
+      <div style="margin-bottom:20px;text-align: center;">
+        <button mat-raised-button color="primary" (click)="selectVerifyUser()">Select and Verify</button>
+      </div>
+
+      <hr>
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+      <mat-form-field  appearance="outline">
+        <mat-label>Is Donated?</mat-label>
+        <input [readonly]="true" matInput [(ngModel)]="selectedDonation.isDonated">
+      </mat-form-field>
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+
+
+      <mat-form-field  appearance="outline">
+        <mat-label>Year</mat-label>
+        <input [readonly]="true" matInput [(ngModel)]="selectedDonation.year">
+      </mat-form-field>
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+
+
+      <mat-form-field  appearance="outline">
+        <mat-label>Recipient</mat-label>
+        <input [readonly]="true" matInput [(ngModel)]="selectedDonation.recipient.name">
+      </mat-form-field>
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+
+      <mat-form-field  appearance="outline">
+        <mat-label>Donation Type</mat-label>
+        <input [readonly]="true" matInput [(ngModel)]="selectedDonation.donationType">
+      </mat-form-field>
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+      <mat-form-field  appearance="outline">
+        <mat-label>Donor</mat-label>
+        <input [readonly]="true" matInput [(ngModel)]="selectedDonation.donor.name">
+      </mat-form-field>
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+      <mat-form-field  appearance="outline">
+        <mat-label>Contribution</mat-label>
+        <input [readonly]="true" matInput [(ngModel)]="selectedDonation.contribution">
+      </mat-form-field>
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+      <mat-form-field  appearance="outline">
+        <mat-label>Device Brand</mat-label>
+        <input [readonly]="true" matInput [(ngModel)]="selectedDonation.deviceBrand">
+      </mat-form-field>
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+      <mat-form-field  appearance="outline">
+        <mat-label>Device Type</mat-label>
+        <input [readonly]="true" matInput [(ngModel)]="selectedDonation.deviceType">
+      </mat-form-field>
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+      <mat-form-field  appearance="outline">
+        <mat-label>Quantity</mat-label>
+        <input [readonly]="true" matInput [(ngModel)]="selectedDonation.quantity">
+      </mat-form-field>
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+      <mat-form-field  appearance="outline">
+        <mat-label>Serial Number</mat-label>
+        <input [readonly]="true" matInput [(ngModel)]="selectedDonation.serialNumber">
+      </mat-form-field>
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+      <mat-form-field  appearance="outline">
+        <mat-label>Model</mat-label>
+        <input [readonly]="true" matInput [(ngModel)]="selectedDonation.model">
+      </mat-form-field>
+
+      <span style="display:inline-block; width: 20px;"></span>
+
+  </div>
+
+  <div style="margin-bottom:20px;margin-left: 20px;text-align: center;">
+    <button mat-raised-button color="primary" (click)="remove()">Remove</button>
+  </div>
+</div>

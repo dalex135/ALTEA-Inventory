@@ -17,22 +17,10 @@ user:User = {
   email: '',
   userType:''};
 
-httpClient: HttpClient;
-readonly LOGIN_ROOT_URL = 'http://localhost:5218/User/GetByUserName';
+isAccessAuthenticated: boolean = false;
 
-constructor(router: Router, httpClient: HttpClient) {
-  this.httpClient = httpClient;
-}
-
-login(username:string, password: string) {
-  const headersLogin = { 'Access-Control-Allow-Origin':'http://localhost:5218',
-                      'Access-Control-Allow-Credentials': 'true',
-                      'content-type': 'application/json'}
-
-    return this.httpClient.get<User>(this.LOGIN_ROOT_URL+'/'+username,
-    {headers:headersLogin, responseType: 'json'})
+constructor() {
 
 }
-
 
 }

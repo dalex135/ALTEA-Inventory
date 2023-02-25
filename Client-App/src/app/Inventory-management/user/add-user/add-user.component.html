@@ -1,10 +1,24 @@
-<div style="border: 0.01px solid rgb(192, 192, 192);">
+<div class="center" style="border: 0.01px solid rgb(192, 192, 192);">
   <div style="margin-top:20px; margin-left: 20px;;text-align: center;">
     <span style="display:inline-block; width: 20px;"></span>
     <form [formGroup]="userForm">
 
-      <h2>Adding a User</h2>
+      <div style="margin-bottom:20px;margin-left: 20px;text-align: left;">
+        <button mat-raised-button  (click)="goHome()">Home</button>
+      </div>
 
+      <h2>Add User</h2>
+      <div>
+        <button type="button" mat-raised-button (click)="fileInput.click()">Choose a Profile Picture</button>
+        <input formControlName="file" hidden (change)="onFileSelected($event)" #fileInput type="file" id="file">
+        <span style="display:inline-block; height: 20px;"></span>
+      </div>
+
+      <hr>
+      <div *ngIf="selectedImage">
+        <img  class="images" [src]="selectedImage" alt="" style="max-width: 500px;"/>
+        <hr>
+      </div>
 
       <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
@@ -22,9 +36,10 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
-        <input matInput formControlName="password">
-      </mat-form-field>
+        <input matInput [type]="showPassword ? 'text' : 'password'" formControlName="password">
+        <mat-icon matSuffix (click)="togglePasswordVisibility()">visibility</mat-icon>
 
+      </mat-form-field>
       <span style="display:inline-block; width: 20px;"></span>
 
 
@@ -46,13 +61,26 @@
       <mat-form-field appearance="outline">
         <mat-label>User Type</mat-label>
         <mat-select formControlName="userType">
-          <mat-option *ngFor="let userType of userTypes" [value]="userType">
+          <mat-option *ngFor="let userType of userTypesStrings; index as i" [value]="userTypesEnum[i]">
             {{userType}}
           </mat-option>
         </mat-select>
       </mat-form-field>
 
-      <span style="display:inline-block; width: 20px;"></span>
+      <span *ngIf="userForm.controls['userType'].value=='RecipientLeader'"  style="display:inline-block; width: 20px;"></span>
+
+
+
+      <mat-form-field *ngIf="userForm.controls['userType'].value=='RecipientLeader'"  appearance="outline">
+        <mat-label>Recipient Leader Type</mat-label>
+        <mat-select formControlName="recipientLeaderType">
+          <mat-option *ngFor="let recipientLeaderType of recipientLeaderTypes" [value]="recipientLeaderType">
+            {{recipientLeaderType}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <span *ngIf="userForm.controls['userType'].value=='RecipientLeader'" style="display:inline-block; width: 20px;"></span>
 
     </form>
   </div>

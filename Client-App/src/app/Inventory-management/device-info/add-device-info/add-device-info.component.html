@@ -1,0 +1,32 @@
+<div class="center" style="border: 0.01px solid rgb(192, 192, 192);">
+  <div style="margin-top:20px; margin-left: 20px;;text-align: center;">
+    <span style="display:inline-block; width: 20px;"></span>
+
+
+      <div style="margin-bottom:20px;margin-left: 20px;text-align: left;">
+        <button mat-raised-button  (click)="goHome()">Home</button>
+      </div>
+
+      <h2>Add a Device Type/Brand</h2>
+
+      <mat-radio-group
+        aria-labelledby="example-radio-group-label"
+        class="example-radio-group"
+        [(ngModel)]="selectedDeviceInfo">
+        <mat-radio-button value="type">Type</mat-radio-button>
+        <mat-radio-button value="brand">Brand</mat-radio-button>
+
+      </mat-radio-group>
+
+      <br>
+      <mat-form-field appearance="outline">
+        <mat-label>Brand/Type</mat-label>
+        <input matInput [(ngModel)]="entryName">
+      </mat-form-field>
+
+
+  </div>
+  <div style="margin-bottom:20px;margin-left: 20px;text-align: center;">
+    <button mat-raised-button color="primary" (click)="add()">Add</button>
+  </div>
+</div>

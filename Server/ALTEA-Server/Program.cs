@@ -9,31 +9,33 @@ internal class Program
     private static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+        var CORSOpenPolicy = "OpenCORSPolicy";
         // Add services to the container.
 
-        builder.Services.AddScoped<IDeviceService, DeviceService>();
-        builder.Services.AddScoped<ISchoolService, SchoolService>();
+
+        builder.Services.AddScoped<IRecipientService, RecipientService>();
         builder.Services.AddScoped<IUserService, UserService>();
-        builder.Services.AddControllers();
-        builder.Services.AddDbContext<DataContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("alteadb")));
+        builder.Services.AddScoped<IGalleryService, GalleryService>();
+        builder.Services.AddScoped<IReportService, ReportService>();
+        builder.Services.AddScoped<IDeviceInfoService, DeviceInfoService>();
+        builder.Services.AddScoped<IDonationService, DonationService>();
+
+        builder.Services.AddControllers()
+                        .AddNewtonsoftJson();
+        //builder.Services.AddDbContext<DataContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("alteadb")));
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+        builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("WebApiDatabase")));
+
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
         builder.Services.AddCors(options =>
         {
-            options.AddPolicy(name: MyAllowSpecificOrigins,
-                              policy =>
-                              {
-                                  policy.WithOrigins("http://localhost:5218/User/Authenticate",
-                                                      "http://localhost:5218",
-                                                      "http://localhost:4200",
-                                                      "http://localhost:4200/login",
-                                                      "https://localhost:7042" )
-                                    .AllowAnyHeader()
-                                    .AllowAnyMethod()
-                                    .AllowCredentials(); 
-                              });
+            options.AddPolicy(name: CORSOpenPolicy,
+                                builder => {
+                                    builder.WithOrigins("*").AllowAnyHeader().AllowAnyMethod();
+                                });
+
+
         });
         var app = builder.Build();
 
@@ -43,7 +45,7 @@ internal class Program
             app.UseSwagger();
             app.UseSwaggerUI();
         }
-        app.UseCors(MyAllowSpecificOrigins);
+        app.UseCors(CORSOpenPolicy);
         app.UseHttpsRedirection();
         app.UseAuthorization();
         app.MapControllers();
